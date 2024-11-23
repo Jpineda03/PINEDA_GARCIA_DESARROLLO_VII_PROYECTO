@@ -62,7 +62,25 @@ class Recetario {
             return "Error al modificar la receta: " . $this->conexion->error;
         }
     }
+    // FILTRAR RECETAS POR TIPO
+    public function filtrarRecetasPorTipo($tipo) {
+        $query = "SELECT id, titulo, ingredientes, instrucciones, autor_id, fecha_creacion FROM recetas WHERE tipo = ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("s", $tipo);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
+        $recetas = [];
+        while ($receta = $resultado->fetch_assoc()) {
+            $recetas[] = $receta;
+        }
+
+        if (empty($recetas)) {
+            return "No se encontraron recetas de ese tipo.";
+        }
+
+        return $recetas;
+    }
 
    // ELIMINAR RECETAS
    public function eliminarReceta($receta_id) {
