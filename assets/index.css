@@ -312,9 +312,9 @@ body{
     align-items: center;
 }
 
-.detalle_libro_contenedor{
+.detalle_receta_contenedor{
     background-color: white;
-    width: 70%;
+    width: 90%;
     height: 90%;
     
     
@@ -322,7 +322,7 @@ body{
     gap: 20px;
 }
 
-.detalle_libro_detalles{
+.detalle_receta_detalles{
     background-color: white;
     width: 70%;
     height: 90%;
@@ -334,14 +334,14 @@ body{
     justify-content: space-between;
 }
 
-.detalle_libro_detalles_opciones{
+.detalle_receta_detalles_opciones{
     gap:20px;
     align-items: center;
     justify-content: end;
 
 }
 
-.detalle_libro_detalles_informacion{
+.detalle_receta_detalles_informacion{
     gap:120px;
     /* border-style: solid; */
     height: -webkit-fill-available;
@@ -349,7 +349,7 @@ body{
 
 }
 
-.detalle_libro_detalles_informacion_titulo{
+.detalle_receta_detalles_informacion_titulo{
     
     font-size: 22px;
     justify-content: space-between;
@@ -359,7 +359,7 @@ body{
 
 }
 
-.detalle_libro_detalles_informacion_descripcion{
+.detalle_receta_detalles_informacion_descripcion{
     
     font-size: 16px;
     text-align: justify;
@@ -369,18 +369,18 @@ body{
 
 }
 
-.detalle_libro_detalles_informacion_descripcion::-webkit-scrollbar{
+.detalle_receta_detalles_informacion_descripcion::-webkit-scrollbar{
     display: none;
 
 }
 
-.detalle_libro_detalles_informacion_otros{
+.detalle_receta_detalles_informacion_otros{
     
     gap:10px;
     
 }
 
-.detalle_libro_close_tag {
+.detalle_receta_close_tag {
 
     position: absolute; 
     top:0px; 
@@ -397,5 +397,19 @@ body{
 
 }
 
+.detalle_contenedor_pasos_receta{
+    overflow-y: scroll;
+    height: 100%;
+    gap:20px;
+}
+
+.detalle_contenedor_pasos_receta::-webkit-scrollbar {
+    display: none;
+}
+
+.detalle_contenedor_pasos_receta >img {
+    height: 90%;
+    width: 100%;
+}
 
 
