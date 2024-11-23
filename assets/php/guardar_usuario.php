@@ -3,8 +3,8 @@
 require_once('Recetario.php');  // Asegúrate de que este archivo existe y está bien incluido
 
   // AQUI HAY QUE IMPLEMENTAR LA CONEXION A LA BASE DE DATOS...
-  //$conexion = new mysqli("localhost", "root", "", "recetas");
-  $conexion = require 'D:\laragon\www\PROYECTO\config.php';
+  $conexion = new mysqli("localhost", "root", "", "recetas");
+ // $conexion = require 'D:\laragon\www\PROYECTO\config.php';
 
   if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Verificar si se pasaron los parámetros 'nombre', 'email' y 'contraseña' en la URL

@@ -9,7 +9,7 @@ class Recetario {
     }
 
       // GUARDAR Y REGISTRA USUARIOS EN LA BASE DE DATOS
-      public function guardarUsuario($nombre, $email, $password) {
+      public function guardarUsuario($nombre, $email, $contraseña) {
         // Verificar si el usuario ya existe
         $query = "SELECT id FROM usuarios WHERE email = ?";
         $stmt = $this->conexion->prepare($query);
@@ -22,9 +22,9 @@ class Recetario {
         }
 
         // Insertar el usuario
-        $query = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO usuarios (nombre, email, contraseña) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
+        $password_hash = password_hash($contraseña, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
         $stmt->bind_param("sss", $nombre, $email, $password_hash);
 
         if ($stmt->execute()) {
