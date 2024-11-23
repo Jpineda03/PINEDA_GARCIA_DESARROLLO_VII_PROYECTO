@@ -298,3 +298,15 @@ body{
     
 }
 
+.detalle{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    z-index: 100;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0.527);
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
