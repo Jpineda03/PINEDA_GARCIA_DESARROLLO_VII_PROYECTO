@@ -335,7 +335,7 @@ body{
     justify-content: space-between;
 }
 .detalle_receta_detalles_informacion{
-    /* gap:120px; */
+    gap:40px;
     /* border-style: solid; */
     height: -webkit-fill-available;
     
@@ -347,7 +347,7 @@ body{
     font-size: 22px;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    /* width: 70%; */
     
 
 }
@@ -356,10 +356,14 @@ body{
     
     font-size: 16px;
     text-align: justify;
-    height: 400px;
+    height: 100px;
     overflow: scroll;
     overflow-x: hidden;
 
+}
+
+.detalle_receta_detalles_informacion_agregar {
+    gap:20px;
 }
 
 .detalle_receta_detalles_informacion_descripcion::-webkit-scrollbar{
@@ -434,6 +438,7 @@ body{
 .detalles_comentarios_usuarios{
     height: 150px;
     border-radius: 10px;
+
 }
 .detalle_titulo_comentario{
     font-weight: bold;
@@ -442,8 +447,8 @@ body{
     
 }
 .text_area_detalles{
-    margin: 10px;
-    padding:20px; 
+    
+    
     margin-bottom: 20px; 
     margin-top: 20px;
     
@@ -454,5 +459,48 @@ body{
     border-radius: 10px;
 }
 
+.font_tittles{
+    font-size: 20px;
+    font-weight: bold;
+}
 
+.area_agregar_pasos{
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+
+}
+
+.area_agregar_ingredientes{
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+
+}
+
+.text_area_pasos{
+    height:25px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.text_area_ingredientes{
+    height:25px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.contenedor_agregar{
+    justify-content: space-between;
+}
+
+.contenedor_agregar{
+    justify-content: space-between;
+}
 

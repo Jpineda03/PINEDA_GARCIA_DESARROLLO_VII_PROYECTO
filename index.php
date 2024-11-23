@@ -99,11 +99,11 @@
       
       <div class="login_contenedor_inferior col">
         
-        <?php if (!isset($_SESSION['access_token'])): ?>
+            <?php if (!isset($_SESSION['access_token'])): ?>
           <div class="col formulario_login_card"'>
-        <?php else: ?>
+            <?php else: ?>
           <div id="formulario_login_card" class="col formulario_login_card" style='display:none;'> 
-        <?php endif; ?>
+            <?php endif; ?>
 
             <label class="font_tittles"> Login de usuarios</label>
 
@@ -119,9 +119,7 @@
                 <input type="password" name="contrasena" style="height: 30px;">
               </div>
               
-              <svg id="google_login" class='clickeable' xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
-                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
-              </svg>
+              
         
               <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
         
@@ -179,11 +177,59 @@
             <div class="detalle_receta_detalles_informacion_descripcion">
                 ${descripcion}
 
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rem numquam, placeat repellat delectus cumque sed quidem. Incidunt, provident possimus error magnam eligendi totam id repudiandae ratione quisquam libero non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nesciunt facere quo temporibus sapiente quasi rerum odit nobis accusamus dicta laudantium veniam distinctio iste, inventore voluptates error incidunt! Harum, sapiente.
+
             </div>
+
+            <div class="detalle_receta_detalles_informacion_agregar col">
+              <div class="detalle_titulo_comentario"> Pasos: </div>
+
+              <div class="pasos_receta">
+                1. Aqui ira tu primera paso de receta.
+
+              </div>
+              
+              <div class="row contenedor_agregar">
+                <input class="text_area_pasos" id="text_area_ingredientes"></input>
+
+                <svg style='display:${not_print_agregar}' id='agregar_favorito_${my_book_id}' onclick="agregar_favorito('${titulo_receta}', '${descripcion}','${imagen}', '${autor}', '${my_book_id}', '${my_book_id}')" class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                    class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                </svg>
+
+              </div>
+
+            </div>
+
+            <div class="detalle_receta_detalles_informacion_agregar col">
+              
+              <div class="detalle_titulo_comentario"> Ingredientes: </div>
+
+              <div class="pasos_receta">
+                1. Aqui ira tu primer ingrediente de receta.
+
+              </div>
+
+              <div class="row contenedor_agregar">
+                <input class="text_area_pasos" id="text_area_ingredientes"></input>
+
+                <svg style='display:${not_print_agregar}' id='agregar_favorito_${my_book_id}' onclick="agregar_favorito('${titulo_receta}', '${descripcion}','${imagen}', '${autor}', '${my_book_id}', '${my_book_id}')" class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                    class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                </svg>
+
+              </div>
+
+            </div>
+
 
             <div class="detalle_receta_detalles_informacion_otros col">
                 <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> ${autor} </div>
-                <div class="detalle_receta_detalles_informacion_anop"><b>A-o de publicacion:</b> ${ano_publicacion} </div>
+                <div class="detalle_receta_detalles_informacion_anop"><b>Última Edición:</b> ${ano_publicacion} </div>
             </div>
 
           </div>
