@@ -4,8 +4,6 @@ import { request } from "./modules/request/index.js";
 import { mostrar_detalles_libros } from "./modules/detallesGenerales/index.js";
 import { libros } from "./modules/libros/index.js";
 
-
-
 const urlParams = new URLSearchParams(window.location.search);
 
 // VALORES POR DEFECTO DEL API DE GOOGLE BOOKS.
@@ -113,10 +111,6 @@ const reload_favoritos = async () => {
 
 }
 
-// const toggle_login = () => {
-   
-//     toggle_element(login);
-// }
 
 const listar_libros = (array) => {
 
@@ -160,70 +154,13 @@ const listar_libros = (array) => {
 }
 
 
-// boton_formulario.addEventListener("click", (event) => {
-//     alert("presionado")
-// });
-
-// google_login.addEventListener("click", () => {
-//     redirigir('http://localhost/PARCIALES/PARCIAL_4/assets/php/GoogleOAuth/login.php');
-// })
-
-// close_login.addEventListener("click", ()=>{
-    
-//    toggle_login();
-
-// })
-
-// open_login.addEventListener("click", ()=>{
-    
-//     toggle_login();
-
-// })
-
-// boton_buscador.addEventListener('click', async () => {
-    
-//     if (texto_buscado.value){
-        
-//         let termino_busqueda = texto_buscado.value; 
-//         libros_disponibles = await request(`${GOOGLE_BOOK_URL}?cantidad_libros=${cantidad_libros}&libro_buscado=${termino_busqueda}`);
-//         arreglo_libros = libros_disponibles.items;
-
-//         console.log(arreglo_libros);
-
-//         contenedor_libro.innerHTML = "";
-//         contenedor_libro.innerHTML = listar_libros(arreglo_libros);
-        
-//     }else{
-//         alert('not posible');
-//     }
-    
-// })
-
-// setTimeout(async () => {
-
-//     if (urlParams.get('opcion') == "ver_libros_favoritos" ){
-       
-//         reload_favoritos();
-        
-//     }else{
-
-//         libros_disponibles = await request(`${GOOGLE_BOOK_URL}?cantidad_libros=${cantidad_libros}&libro_buscado=${libro_buscado}`);
-        
-//         arreglo_libros = libros_disponibles.items;
-//         arreglo_libros_detalle = arreglo_libros;
-
-//         contenedor_libro.innerHTML = "";
-//         contenedor_libro.innerHTML = listar_libros(arreglo_libros);
-//     }
-    
-// }, 2000);
 
 window.toggle_detalle = toggle_detalle;
 window.arreglo_libros = arreglo_libros;
 window.redirigir = redirigir;
 window.agregar_favorito = agregar_favorito;
-window.eliminar_favoritos = eliminar_favoritos
-window.toggle_element = toggle_element
+window.eliminar_favoritos = eliminar_favoritos;
+window.toggle_element = toggle_element;
 
 
 
