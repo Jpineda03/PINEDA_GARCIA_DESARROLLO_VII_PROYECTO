@@ -1,3 +1,13 @@
+<?php 
+
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -44,6 +54,7 @@
     </div>
 
     <div class="contenedor-derecho">
+      
       <div class='main_container'>
 
         <div onclick='abrir_detalles()' class='receta'
@@ -212,7 +223,7 @@
 
 
 
-  <div id="login" class="barra_formulario_login col close">
+  <div id="login" class="barra_formulario_login col open">
 
     <div class="login_opciones_close row">
 
@@ -227,34 +238,54 @@
     <div class="login_contenedor_inferior col">
 
       <?php if (!isset($_SESSION['access_token'])): ?>
-      <div class="col formulario_login_card"'>
-            <?php else: ?>
-          <div id="formulario_login_card" class="col formulario_login_card" style=' display:none;'>
-        <?php endif; ?>
+        <div class="col formulario_login_card"'>
+      <?php else: ?>
+        <div id="formulario_login_card" class="col formulario_login_card" style=' display:none;'>
+      <?php endif; ?>
 
-        <label class="font_tittles"> Login de usuarios</label>
+      <label class="font_tittles"> Login de usuarios</label>
 
-        <form class="col formulario_login_main" method="post" action="./assets/php/login.php">
+        <?php if(!isset($_GET['opcion'])): ?>
+          <form class="col formulario_login_main" method="post" action="./assets/php/login.php">
+        
+            <div class="col">
+            <label class="font_form_tittles">Correo:</label>
+            <input type="text" name="email" style="height: 30px;">
+            </div>
 
-          <div class="col">
-            <label class="font_form_tittles">Usuario:</label>
-            <input type="text" name="usuario" style="height: 30px;">
-          </div>
+            <div class="col">
+            <label class="font_form_tittles">Contraseña: </label>
+            <input type="password" name="contraseña" style="height: 30px;">
+            </div>
 
-          <div class="col">
-            <label class="font_form_tittles">Contrasena: </label>
-            <input type="password" name="contrasena" style="height: 30px;">
-          </div>
+            <a href="?opcion=registrar">Registrar Usuario</a>
+            <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
+        <?php else:?>
+          <form class="col formulario_login_main" method="post" action="./assets/php/guardar_usuario.php">
 
+            <div class="col">
+            <label class="font_form_tittles">Nombre: </label>
+            <input type="text" name="nombre" style="height: 30px;">
+            </div>
 
+            <div class="col">
+            <label class="font_form_tittles">Correo:</label>
+            <input type="text" name="email" style="height: 30px;">
+            </div>
 
-          <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
+            <div class="col">
+            <label class="font_form_tittles">Contraseña: </label>
+            <input type="password" name="contraseña" style="height: 30px;">
+            </div>
 
-        </form>
+            <button id="btn_login_formulario" class="login_button">Registrar usuario</button>
+        <?php endif;?>
 
-      </div>
+      </form>
 
-      <?php if (isset($user_information)): ?>
+    </div>
+
+    <?php if (isset($user_information)): ?>
 
       <div class='login_contenedor_central col'>
         <div class='card shadow row space_around'>
@@ -277,12 +308,13 @@
         </div>
       </div>
 
-      <button id="logout" class='login_button login_button_logout clickeable'
-        onclick="redirigir('http://localhost/PARCIALES/PARCIAL_4/assets/php/logout.php')"> CERRAR SESSION </button>
+      <button id="logout" class='login_button login_button_logout clickeable' onclick="redirigir('http://localhost/PARCIALES/PARCIAL_4/assets/php/logout.php')"> 
+        CERRAR SESSION 
+      </button>
 
-      <?php endif; ?>
+    <?php endif; ?>
 
-    </div>
+  </div>
 
   </div>
 

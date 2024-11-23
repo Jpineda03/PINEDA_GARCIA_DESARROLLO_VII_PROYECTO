@@ -35,6 +35,12 @@ body{
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+.font_form_tittles{
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* border-style:none none solid none; */
+}
+
 
 
 .header_principal{
