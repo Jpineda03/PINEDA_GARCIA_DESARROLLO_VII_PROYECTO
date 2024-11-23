@@ -8,6 +8,27 @@ body{
     gap: 20px;
     background-color: #FFCCBC;
 }
+.close {
+    /* display: none !important; */
+    width: 0px !important;
+    display: none !important;
+    
+}
+
+.open {
+    display: flex;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+    
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .header_principal{
     background-color:#455A64;
@@ -165,3 +186,115 @@ body{
     /*height: -webkit-fill-available; */
     /* border-style: solid; */
 }
+
+/*FORMULARIO DE LOGIN*/
+
+.barra_formulario_login{
+    width: 30%;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    top:0px;
+    /* border-style: solid; */
+    color: black;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-sizing: border-box;
+    z-index: 100;
+
+    justify-content: start;
+    display: flex;
+
+    transition: width 0.5s ease;
+}
+
+.formulario_login_main{
+    gap:40px;
+}
+
+.formulario_login_card{
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding: 50px;
+    gap: 50px;
+    border-radius: 10px;
+    margin: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0,0,0,0.16);
+    
+
+}
+
+.login_button{
+    height: 50px;
+    min-width: 200px;
+    border-radius: 10px;
+    border-style: none;
+    color: white;
+    background-color: #616161;
+
+}
+
+.login_button:hover{
+    background-color: #616161a1;
+}
+
+.login_button_logout{
+    background-color: #3c4a99;
+    height: 100px;
+    border-radius: 0px;
+    justify-self: flex-end;
+    width: -webkit-fill-available;
+   
+}
+
+.login_opciones_close{
+    height: 10vh;
+    color: white;
+    background-color: #616161;
+    justify-content: end;
+    align-items: center;
+    padding:0px 20px;
+    gap:20px;
+
+}
+
+.login_msg {
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: -webkit-fill-available;
+    font-weight: bold;
+
+}
+
+.login_contenedor_inferior{
+    justify-content: space-between;
+   
+    height: -webkit-fill-available;
+    margin-top: 20px;
+
+  
+}
+
+.login_contenedor_central{
+    gap:10px;
+    padding: 10px;
+
+}
+
+.login_image {
+    height: 100px;  width: 100px; background-repeat: no-repeat; background-size: 100% 100%; border-radius: 50%;
+}
+
+.login_usuario_mail{
+    font-size: 20px;
+    /* border-style: solid; */
+    justify-content: center;
+    align-items: center;
+    
+}
+

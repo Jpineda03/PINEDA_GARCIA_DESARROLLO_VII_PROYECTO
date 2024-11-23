@@ -1,3 +1,5 @@
+import 'index.css';
+
 export const mostrar_detalles_libros = (titulo_libro, descripcion, imagen, autor, ano_publicacion, my_book_id, resena_personal) => {
     
     let  urlParams = new URLSearchParams(window.location.search);

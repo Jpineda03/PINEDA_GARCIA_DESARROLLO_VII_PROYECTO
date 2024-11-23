@@ -4,6 +4,7 @@ import { request } from "./modules/request/index.js";
 import { mostrar_detalles_libros } from "./modules/detallesGenerales/index.js";
 import { libros } from "./modules/libros/index.js";
 
+import 'index.css';
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -112,9 +113,10 @@ const reload_favoritos = async () => {
 
 }
 
-const toggle_login = () => {
-    toggle_element(login);
-}
+// const toggle_login = () => {
+   
+//     toggle_element(login);
+// }
 
 const listar_libros = (array) => {
 

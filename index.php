@@ -12,7 +12,7 @@
         <div>Recetas</div>
       </div>
 
-      <svg xmlns="http://www.w3.org/2000/svg" onclick='toggle_element("elemente_1")' width="42" height="42" fill="currentColor" class=" clickeable bi bi-person-circle" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" onclick='toggle_element("login")' width="42" height="42" fill="currentColor" class=" clickeable bi bi-person-circle" viewBox="0 0 16 16">
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
       </svg>
@@ -69,7 +69,9 @@
           
             <div class='receta-v1' style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'> 
               <div class='receta-contenido-v1'> 
-                <svg height="50%" width="50%" fill="#ffffff" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m 6.5232086,12.983925 c -2.402919,-0.158 -4.531541,-1.8703 -5.229897,-4.2071 -0.34855497,-1.1663 -0.36992997,-2.0644 -0.07666,-3.2205 0.568674,-2.2418 2.339724,-3.9468 4.578899,-4.4082 1.037499,-0.2137 1.617793,-0.2001 2.726022,0.064 2.0387694,0.486 3.7598434,2.2094 4.3337064,4.3396 0.186507,0.6923 0.172678,2.3026 -0.02602,3.0298 -0.652295,2.3874 -2.745872,4.1714 -5.1597044,4.3969 -0.279066,0.026 -0.794924,0.028 -1.146352,0.01 z m 1.870005,-1.3055 c 2.6262414,-0.7559 4.1102714,-3.5955 3.2415114,-6.2024 -0.185144,-0.5556 -0.632726,-1.3636 -0.755317,-1.3636 -0.04337,0 -0.260049,0.1828 -0.4815,0.4062 l -0.4026374,0.4063 -0.490059,0.038 c -0.269533,0.021 -0.626638,0.08 -0.793566,0.1306 l -0.303506,0.092 0,-0.2231 c 0,-0.1993 0.08346,-0.3083 0.781756,-1.0205 l 0.781755,-0.7973 -0.158769,-0.1225 c -0.258941,-0.1997 -1.149904,-0.6117 -1.59643,-0.7383 -0.559027,-0.1584 -1.780823,-0.1622 -2.36415,-0.01 -0.57961,0.1539 -1.501678,0.6218 -1.903167,0.9658 -0.784206,0.672 -1.405346,1.6445 -1.657139,2.5947 -0.151103,0.5702 -0.148372,1.7325 0.0055,2.3322 0.122827,0.4787 0.624422,1.568 0.782474,1.6992 0.08002,0.066 0.163853,0.012 0.513055,-0.3307 l 0.41741,-0.4101 0.105711,0.1598 c 0.05814,0.088 0.244017,0.3078 0.41306,0.4888 l 0.307351,0.3292 -0.354713,0.3691 c -0.195093,0.2031 -0.354714,0.3898 -0.354714,0.415 0,0.1328 1.054359,0.678 1.603793,0.8294 0.815667,0.2246 1.791557,0.2096 2.66231,-0.041 z m -2.609889,-1.8373 c -0.479798,-0.1974 -0.777824,-0.4356 -1.02311,-0.8178 -0.178315,-0.2779 -0.373502,-0.8657 -0.376522,-1.1338 -0.0017,-0.1494 0.767787,-0.052 1.178392,0.1484 0.63217,0.3093 1.18476,1.117 1.18476,1.7317 l 0,0.2212 -0.303506,0 c -0.167053,0 -0.463787,-0.068 -0.660014,-0.1482 z m 1.538584,-0.086 c 0,-0.4121 0.180926,-0.8288 0.521775,-1.2018 0.390043,-0.4267 0.864676,-0.6702 1.401442,-0.7189 l 0.396934,-0.036 -0.03637,0.3524 c -0.09721,0.9419 -0.926957,1.7343 -1.909129,1.8234 l -0.374648,0.034 0,-0.2531 z m -1.23099,-1.9428 c -0.874006,-0.2059 -1.55623,-0.9692 -1.673652,-1.8725 l -0.04064,-0.3126 0.354608,0.042 c 1.069923,0.1257 1.897788,0.8981 1.997431,1.8636 l 0.03606,0.3494 -0.216601,-0.01 c -0.119131,0 -0.324873,-0.032 -0.457204,-0.063 z m 1.246063,-0.2924 c 0.07748,-0.8545 0.737264,-1.5758 1.63447,-1.7869 0.600694,-0.1414 0.650712,-0.1287 0.650712,0.1657 0,0.7121 -0.590621,1.5169 -1.311154,1.7865 -0.209386,0.078 -0.521995,0.1591 -0.694688,0.1796 l -0.313986,0.037 0.03465,-0.3821 z m -0.521453,-1.3995 c -0.36342,-0.4139 -0.482759,-0.7524 -0.482759,-1.3694 0,-0.6143 0.119412,-0.9557 0.476551,-1.3624 0.23767,-0.2707 0.273925,-0.2595 0.57519,0.1784 0.208298,0.3027 0.38467,0.8478 0.38467,1.1888 0,0.4099 -0.234888,1.0416 -0.497203,1.3372 l -0.241529,0.2722 -0.21492,-0.2448 z"></path></g></svg> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="white" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                </svg>  
               </div>
             </div>
     
@@ -83,11 +85,78 @@
 
       </div>
     </div>
+
+    <div id="login" class="barra_formulario_login col close">
+    
+      <div class="login_opciones_close row">
+  
+        <svg onclick='toggle_element("login")' class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+          <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
+        </svg>
+
+      </div>
+      
+      <div class="login_contenedor_inferior col">
+        
+        <?php if (!isset($_SESSION['access_token'])): ?>
+          <div class="col formulario_login_card"'>
+        <?php else: ?>
+          <div id="formulario_login_card" class="col formulario_login_card" style='display:none;'> 
+        <?php endif; ?>
+
+            <label class="font_tittles"> Login de usuarios</label>
+
+            <form class="col formulario_login_main" method="post" action="./assets/php/login.php">
+              
+              <div class="col">
+                <label class="font_form_tittles">Usuario:</label>
+                <input type="text" name="usuario" style="height: 30px;">
+              </div>
+    
+              <div class="col">
+                <label class="font_form_tittles">Contrasena: </label>
+                <input type="password" name="contrasena" style="height: 30px;">
+              </div>
+              
+              <svg id="google_login" class='clickeable' xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+              </svg>
+        
+              <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
+        
+            </form>
+
+          </div>
+      
+        <?php if (isset($user_information)): ?>
+          
+          <div class='login_contenedor_central col'>
+            <div class='card shadow row space_around'>
+              <div class="login_image" style=" background-image: url('<?php echo $user_information['picture']; ?>'); "></div>
+              <div class="login_usuario_mail col">
+                <div class='login_nombre_usuario'><?php echo $user_information['name']; ?></div>
+                <div class='login_nombre_email'><?php echo $user_information['email']; ?></div>
+              </div>
+            </div>
+
+            <div class='card shadow clickeable' onclick='redirigir("http://localhost/PARCIALES/PARCIAL_4/?opcion=ver_libros_favoritos")'>
+              <b>MOSTRAR LISTA DE FAVORITOS</b>
+
+            </div>
+          </div>
+          
+          <button id="logout" class='login_button login_button_logout clickeable' onclick="redirigir('http://localhost/PARCIALES/PARCIAL_4/assets/php/logout.php')"> CERRAR SESSION </button>
+      
+        <?php endif; ?>
+
+      </div>
+
+    </div>
    
         
   </body>
 
-  <script type="module" src="./assets/main.js"></script>
+  
 
 </html>
 
