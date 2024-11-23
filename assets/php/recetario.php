@@ -48,6 +48,20 @@ class Recetario {
         }
     }
 
+    public function guardarIngredientes($ingredientes, $receta_id) {
+        $query = "INSERT INTO ingredientes (nombre, cantidad, id_receta) VALUES (?, ?, ?)";
+        $stmt = $this->conexion->prepare($query);
+    
+        foreach ($ingredientes as $ingrediente) {
+            // Asegúrate de que el ingrediente tenga un nombre y cantidad válidos
+            $stmt->bind_param("ssi", $ingrediente['nombre'], $ingrediente['cantidad'], $receta_id);
+            $stmt->execute();
+        }
+    
+        return "Ingredientes guardados correctamente.";
+    }
+    
+
     // MODIFICAR RECETAS EN LA BASE DE DATOS
 
     public function modificarReceta($receta_id, $titulo, $descripcion, $ingredientes, $instrucciones) {
