@@ -258,8 +258,8 @@
             <input type="password" name="contraseña" style="height: 30px;">
             </div>
 
-            <a href="?opcion=registrar">Registrar Usuario</a>
             <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
+            <div> Eres nuevo? <a href="?opcion=registrar"> Create un usuario</a> <div>
         <?php else:?>
           <form class="col formulario_login_main" method="post" action="./assets/php/guardar_usuario.php">
 
