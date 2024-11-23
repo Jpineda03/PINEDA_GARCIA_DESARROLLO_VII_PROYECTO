@@ -5,7 +5,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    gap: 20px;
+    gap: 50px;
     background-color: #FFCCBC;
 }
 .close {
@@ -483,7 +483,7 @@ body{
     width: 90%;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 2.5px 10px;
 
 }
 
@@ -492,7 +492,7 @@ body{
     width: 90%;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 2.5px 10px;
 
 }
 
