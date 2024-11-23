@@ -1,9 +1,9 @@
 export const Receta = (OBJECT_RECETA) => {
 
     return `
-        <div class="componente_receta row">
+        <div class="componente_receta row shadow">
 
-            <img class="componente_recetas_imagen" src='.\assets\images\receta_presentacion.png' class="shadow" height="100%">
+            <img class="componente_recetas_imagen" src='./assets/images/receta_presentacion.png' class="shadow" height="100%">
 
             <div class="componente_receta_contenedor_der col" style="position: relative;">
 
@@ -11,12 +11,12 @@ export const Receta = (OBJECT_RECETA) => {
 
                     <label class="componente_receta_titulo row">
 
-                        <b>${titulo_receta}</b>
+                        <b>{titulo_receta}</b>
 
                     </label>
 
                     <div class="componente_receta_descripcion">
-                        ${descripcion}
+                        {descripcion}
 
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rem numquam, placeat repellat delectus
                         cumque sed quidem. Incidunt, provident possimus error magnam eligendi totam id repudiandae ratione
@@ -32,7 +32,7 @@ export const Receta = (OBJECT_RECETA) => {
 
                 <div class="componente_receta_contenedor_der_inf row">
 
-                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> ${autor} </div>
+                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> {autor} </div>
 
                     <div class="componente_receta_stars">
                         
@@ -69,13 +69,7 @@ export const Receta = (OBJECT_RECETA) => {
 
                 </div>
 
-                <div id='' class="detalle_receta_close_tag" onclick='toggle_element("detalle")'>
-                    <svg class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white"
-                        class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
-                    </svg>
-                </div>
+                
 
             </div>
 

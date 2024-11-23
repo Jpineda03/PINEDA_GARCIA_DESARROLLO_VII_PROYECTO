@@ -1,0 +1,14 @@
+.componente_contenedor_recetas{
+    /* border-style: solid; */
+    width: 70vw;
+    max-height: 80vh;
+    overflow-y: scroll;
+    
+    gap: 40px;
+    padding: 20px;
+
+}
+
+.componente_contenedor_recetas::-webkit-scrollbar {
+    display: none;
+}

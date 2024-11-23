@@ -1,8 +1,11 @@
 import { toggle_element, redirigir, HtmlEncode } from "./modules/funcionesGenerales/index.js";
 import { request } from "./modules/request/index.js";
 import { detallasGenerales } from "./modules/detallesGenerales/index.js";
-
 import { Receta } from "./modules/Recetas/index.js";
+import { contenedorRecetas } from "./modules/contenedorRecetas/index.js";
+
+var detalle = document.getElementById('detalle');
+var contenido_dinamico = document.getElementById('contenido_dinamico');
 
 var arreglo_recetas = "";
 var arreglo_recetas_detalle = "";
@@ -14,18 +17,36 @@ const GOOGLE_BOOK_URL = 'http://localhost/PARCIALES/PARCIAL_4/assets/php/GoogleB
 const cantidad_receta = 40;
 const libro_buscado = "php";
 
+const listar_recetas = () => {
 
-window.addEventListener('load', () => {
+    contenido_dinamico.innerHTML = "";
+    let HTML = ""
+    for (let index = 0; index < 5; index++) {
+        
+         HTML += Receta();
+        
+    }
 
+    contenido_dinamico.innerHTML += contenedorRecetas(HTML);
+
+}
+
+const abrir_detalles = () => {
+    detalle.innerHTML = "";
+    toggle_element('detalle');
+    detalle.innerHTML = detallasGenerales();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    //listar_recetas()
 });
 
 
 
-window.toggle_detalle = toggle_detalle;
-window.arreglo_receta = arreglo_receta;
+
 window.redirigir = redirigir;
-window.agregar_favorito = agregar_favorito;
-window.eliminar_favoritos = eliminar_favoritos;
+window.abrir_detalles = abrir_detalles;
+window.listar_recetas = listar_recetas;
 window.toggle_element = toggle_element;
 
 
