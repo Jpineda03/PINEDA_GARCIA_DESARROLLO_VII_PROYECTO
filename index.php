@@ -28,7 +28,7 @@
       <div class="contenedor-derecho">
         <div class='main_container'>
     
-          <div class='receta' style='background-image: url("assets/images/image-animal.jpg");'> 
+          <div onclick='toggle_element("detalle_libro")' class='receta' style='background-image: url("assets/images/image-animal.jpg");'> 
             <div class='receta-contenido'> 
               <svg viewBox="0 0 24 24" fill="none" height="50%" width="50%"  xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7744 5.6944C16.7363 5.60548 16.6966 5.55984 16.5688 5.4321C16.2759 5.13921 15.8011 5.13921 15.5082 5.4321C15.2153 5.72499 15.2153 6.19987 15.5082 6.49276L16.0385 7.02309L14.3937 8.66785C14.6008 8.80477 14.7964 8.96297 14.9778 9.14441C15.1593 9.32586 15.3175 9.52145 15.4544 9.72851L17.0992 8.08375L17.6295 8.61408C17.9224 8.90698 18.3973 8.90698 18.6901 8.61408C18.983 8.32119 18.983 7.84632 18.6901 7.55342C18.5624 7.42569 18.5168 7.38595 18.4278 7.34785C18.3239 7.30328 18.1044 7.24276 17.6295 7.24276H16.8795V6.49276C16.8795 6.01789 16.819 5.79839 16.7744 5.6944ZM16.0704 11.2338C16.2803 12.2047 16.2235 13.2635 16.0238 14.2423C15.6574 16.0382 14.7598 17.8477 13.6761 18.9314C11.4331 21.1744 7.74093 20.9994 5.43189 18.6904C3.12284 16.3813 2.94784 12.6891 5.19083 10.4461C6.2745 9.36246 8.084 8.46482 9.87993 8.09842C10.8588 7.89872 11.9175 7.84191 12.8885 8.0518L14.0077 6.93256C13.6082 6.09622 13.7548 5.06417 14.4475 4.37144C15.3262 3.49276 16.7508 3.49276 17.6295 4.37144C17.633 4.37498 17.6366 4.37857 17.6403 4.38222C17.7785 4.52028 17.9965 4.73805 18.1531 5.10352C18.2384 5.30253 18.2986 5.52701 18.3353 5.78692C18.5952 5.82368 18.8197 5.88384 19.0187 5.96913C19.3842 6.12576 19.602 6.34377 19.74 6.48198C19.7437 6.48563 19.7473 6.48922 19.7508 6.49276C20.6295 7.37144 20.6295 8.79606 19.7508 9.67474C19.0581 10.3675 18.026 10.5141 17.1897 10.1145L16.0704 11.2338ZM10.1798 9.56815C8.60741 9.88893 7.08494 10.6733 6.25149 11.5068C4.66024 13.098 4.70109 15.8382 6.49255 17.6297C8.28401 19.4212 11.0242 19.462 12.6155 17.8708C13.4489 17.0373 14.2333 15.5148 14.5541 13.9425C14.8806 12.3422 14.6783 10.9662 13.9172 10.2051C13.156 9.4439 11.7801 9.24167 10.1798 9.56815Z" fill="#ffffff"></path> </g></svg>
             </div>
@@ -154,16 +154,72 @@
 
     </div>
 
-    <div id="detalle_receta" class=" detalle row">
 
-      pronto regresamos
+    <div id="detalle" class="close detalle_libro row">
+
+      <div class="detalle_libro_contenedor row" style="background-size: 100% 100%;">
+            <img src='.\assets\images\receta_presentacion.png' width=50%; height="100%"' class="shadow">
+           
+            <div class="detalle_libro_detalles col" style="position: relative;">
+
+                <div class="detalle_libro_detalles_informacion col">
+
+                    <label class="detalle_libro_detalles_informacion_titulo row">
+
+                        <b>${titulo_libro}</b>
+
+                    </label>
+
+                    <div class="detalle_libro_detalles_informacion_descripcion">
+                        ${descripcion}
+
+                    </div>
+
+                    <div class="detalle_libro_detalles_informacion_otros col">
+                        <div class="detalle_libro_detalles_informacion_autor"><b>Autor del Libro:</b> ${autor} </div>
+                        <div class="detalle_libro_detalles_informacion_anop"><b>A-o de publicacion:</b> ${ano_publicacion} </div>
+                    </div>
+
+                </div>
+
+                <textarea id='text_area_detalle' text='' style=" padding:20px; margin-bottom: 20px; height: 15vh; margin-top: 20px;" placeholder='${resena_personal}'></textarea>
+
+                <div class="detalle_libro_detalles_opciones row">
+
+                    <svg  style='display:${not_print_eliminar}' id="eliminar_favorito_${my_book_id}" onclick="eliminar_favoritos('${my_book_id}')" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill=" clickeable currentColor" class="clickeable bi bi-x-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+
+                    <label style="font-weight: bold; display:${not_print_eliminar}"> Eliminar de favoritos</label>
+
+                    <svg style='display:${not_print_agregar}' id='agregar_favorito_${my_book_id}' onclick="agregar_favorito('${titulo_libro}', '${descripcion}','${imagen}', '${autor}', '${my_book_id}', '${my_book_id}')" class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                        <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg>
+
+                    <label style="font-weight: bold; display:${not_print_agregar}"> Agregar a favoritos</label>
+
+                </div>
+
+                <div id='close_detalle' class="detalle_libro_close_tag" onclick='toggle_element("detalle")'>
+                    <svg class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
+                    </svg>
+                </div>
+
+
+            </div>
+        </div>
 
     </div>
-   
-        
-  </body>
 
-  <script type="module" src="./assets/main.js"></script>
+  </body>
+        
+  <script type="module" src="./assets/main.js"></script>s
+
 
 </html>
 

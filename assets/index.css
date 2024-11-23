@@ -298,7 +298,9 @@ body{
     
 }
 
+
 .detalle{
+
     position: absolute;
     top:0px;
     left: 0px;
@@ -306,7 +308,94 @@ body{
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     background-color: rgba(0, 0, 0, 0.527);
-    color: white;
     justify-content: center;
     align-items: center;
 }
+
+.detalle_libro_contenedor{
+    background-color: white;
+    width: 70%;
+    height: 90%;
+    
+    
+    color: #616161;
+    gap: 20px;
+}
+
+.detalle_libro_detalles{
+    background-color: white;
+    width: 70%;
+    height: 90%;
+    
+    padding: 50px;
+    color: #616161;
+    
+
+    justify-content: space-between;
+}
+
+.detalle_libro_detalles_opciones{
+    gap:20px;
+    align-items: center;
+    justify-content: end;
+
+}
+
+.detalle_libro_detalles_informacion{
+    gap:120px;
+    /* border-style: solid; */
+    height: -webkit-fill-available;
+    
+
+}
+
+.detalle_libro_detalles_informacion_titulo{
+    
+    font-size: 22px;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    
+
+}
+
+.detalle_libro_detalles_informacion_descripcion{
+    
+    font-size: 16px;
+    text-align: justify;
+    height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+}
+
+.detalle_libro_detalles_informacion_descripcion::-webkit-scrollbar{
+    display: none;
+
+}
+
+.detalle_libro_detalles_informacion_otros{
+    
+    gap:10px;
+    
+}
+
+.detalle_libro_close_tag {
+
+    position: absolute; 
+    top:0px; 
+    right: 40px; 
+    height: 80px; 
+    width: 60px; 
+    border-style: solid; 
+    z-index: 101; 
+    background-color: red; 
+    display: flex; 
+    align-items: end; 
+    justify-content: center;
+    padding-bottom: 20px;
+
+}
+
+
+
