@@ -49,10 +49,12 @@ class Recetario {
     }
 
     // MODIFICAR RECETAS EN LA BASE DE DATOS
-    public function modificarReceta($receta_id, $titulo, $ingredientes, $instrucciones) {
-        $query = "UPDATE recetas SET titulo = ?, ingredientes = ?, instrucciones = ? WHERE id = ?";
+
+    public function modificarReceta($receta_id, $titulo, $descripcion, $ingredientes, $instrucciones) {
+        $query = "UPDATE recetas SET titulo = ?, descripcion = ?, ingredientes = ?, instrucciones = ? WHERE id = ?";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssi", $titulo, $ingredientes, $instrucciones, $receta_id);
+        $stmt->bind_param("ssssi", $titulo, $descripcion, $ingredientes, $instrucciones, $receta_id);
+    
 
         if ($stmt->execute()) {
             return "Receta modificada exitosamente.";
@@ -60,6 +62,7 @@ class Recetario {
             return "Error al modificar la receta: " . $this->conexion->error;
         }
     }
+
 
    // ELIMINAR RECETAS
    public function eliminarReceta($receta_id) {
