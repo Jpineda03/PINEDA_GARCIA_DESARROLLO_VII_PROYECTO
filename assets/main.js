@@ -4,9 +4,7 @@ import { detallasGenerales } from "./modules/detallesGenerales/index.js";
 import { Receta } from "./modules/Recetas/index.js";
 import { contenedorRecetas } from "./modules/contenedorRecetas/index.js";
 
-
-
-
+var detalle = document.getElementById('detalle');
 var contenido_dinamico = document.getElementById('contenido_dinamico');
 
 var arreglo_recetas = "";
@@ -33,16 +31,23 @@ const listar_recetas = () => {
 
 }
 
+const abrir_detalles = () => {
+    detalle.innerHTML = "";
+    toggle_element('detalle');
+    detalle.innerHTML = detallasGenerales();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-    listar_recetas()
+    //listar_recetas()
 });
 
 
 
 
 window.redirigir = redirigir;
-window.toggle_element = toggle_element;
+window.abrir_detalles = abrir_detalles;
 window.listar_recetas = listar_recetas;
+window.toggle_element = toggle_element;
 
 
 

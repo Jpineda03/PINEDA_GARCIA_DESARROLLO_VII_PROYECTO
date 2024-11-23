@@ -46,7 +46,7 @@
     <div class="contenedor-derecho">
       <div class='main_container'>
 
-        <div onclick='toggle_element("detalle")' class='receta'
+        <div onclick='abrir_detalles()' class='receta'
           style='background-image: url("assets/images/image-animal.jpg");'>
           <div class='receta-contenido'>
             <svg viewBox="0 0 24 24" fill="none" height="50%" width="50%" xmlns="http://www.w3.org/2000/svg">
