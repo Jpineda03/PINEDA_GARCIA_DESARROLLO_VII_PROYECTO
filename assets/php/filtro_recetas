@@ -1,0 +1,40 @@
+<?php
+// Incluir el archivo de la clase Recetario
+require_once 'recetario.php';
+
+// CONEXION A LA BASE DE DATOS 
+require_once 'D:\laragon\www\PROYECTO\config.php';
+
+// Verificar la conexión a la base de datos
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Crear una instancia de la clase Recetario
+$recetario = new Recetario($conexion);
+
+// Comprobar si el parámetro 'tipo' está presente en la URL (método GET)
+if (isset($_GET['tipo']) && !empty($_GET['tipo'])) {
+    $tipo = $_GET['tipo']; // Obtener el tipo de receta desde la URL
+
+    // Llamar al método para filtrar las recetas por tipo
+    $recetasFiltradas = $recetario->filtrarRecetasPorTipo($tipo);
+
+    // Mostrar las recetas o un mensaje si no hay recetas del tipo solicitado
+    if (is_array($recetasFiltradas)) {
+        foreach ($recetasFiltradas as $receta) {
+            echo "<h3>" . $receta['titulo'] . "</h3>";
+            echo "<p><strong>Ingredientes:</strong> " . $receta['ingredientes'] . "</p>";
+            echo "<p><strong>Instrucciones:</strong> " . $receta['instrucciones'] . "</p>";
+            echo "<hr>";
+        }
+    } else {
+        echo $recetasFiltradas; // Mensaje si no se encontraron recetas
+    }
+} else {
+    echo "Por favor, ingrese un tipo de receta válido en la URL.";
+}
+
+// Cerrar la conexión
+$conexion->close();
+?>
