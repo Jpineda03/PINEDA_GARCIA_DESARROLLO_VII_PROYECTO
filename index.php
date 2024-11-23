@@ -84,6 +84,7 @@
         </div>
 
       </div>
+
     </div>
 
     <div id="login" class="barra_formulario_login col close">
@@ -152,11 +153,17 @@
       </div>
 
     </div>
+
+    <div id="detalle_receta" class=" detalle row">
+
+      pronto regresamos
+
+    </div>
    
         
   </body>
 
-  
+  <script type="module" src="./assets/main.js"></script>
 
 </html>
 
