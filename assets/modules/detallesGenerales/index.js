@@ -1,4 +1,4 @@
-DETALLE_OBJ = {
+var DETALLE_OBJ = {
 
 }
 
