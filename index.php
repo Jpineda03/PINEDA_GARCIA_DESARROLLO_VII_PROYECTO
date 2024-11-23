@@ -156,7 +156,7 @@
         
   </body>
 
-  
+  <script type="module" src="./assets/main.js"></script>
 
 </html>
 
