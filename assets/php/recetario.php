@@ -48,6 +48,34 @@ class Recetario {
         }
     }
 
+    //GUARDAR IMAGENES AL CARGAR LAS RECETAS
+    public function guardarImagen($receta_id, $imagen) {
+        // Verificar si la imagen se subió sin errores
+        if ($imagen['error'] !== UPLOAD_ERR_OK) {
+            return "Error al subir la imagen.";
+        }
+    
+        // Definir el nombre y el destino de la imagen
+        $imagen_nombre = "imagen_" . time() . "." . pathinfo($imagen['name'], PATHINFO_EXTENSION);
+        $directorio_destino = "uploads/";
+    
+        // Mover la imagen al directorio destino
+        if (move_uploaded_file($imagen['tmp_name'], $directorio_destino . $imagen_nombre)) {
+            // Guardar la ruta de la imagen en la base de datos
+            $query = "INSERT INTO imagenes (id_receta, imagen_url) VALUES (?, ?)";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bind_param("is", $receta_id, $directorio_destino . $imagen_nombre);
+            if ($stmt->execute()) {
+                return "Imagen guardada correctamente.";
+            } else {
+                return "Error al guardar la imagen en la base de datos.";
+            }
+        } else {
+            return "Error al mover la imagen.";
+        }
+    }
+    
+
     // MODIFICAR RECETAS EN LA BASE DE DATOS
 
     public function modificarReceta($receta_id, $titulo, $descripcion, $ingredientes, $instrucciones) {
