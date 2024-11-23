@@ -1,13 +1,12 @@
 <?php
 
-
-    require_once '.\Recetario.php';
+    require_once 'Recetario.php';
     session_start();
 
     //hay que agregar la conexion a la base de datos
    // $conexion = new mysqli("localhost", "root", "", "biblioteca_personal");
 
-   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     session_start(); // Iniciar la sesión para acceder a la información del usuario
 
     // Verificar que el usuario está autenticado y los parámetros necesarios están presentes
@@ -40,7 +39,7 @@
     }
 } else {
     // Si no es una solicitud POST
-    echo json_encode(["error" => "Este script solo acepta solicitudes POST."]);
+    echo json_encode(["error" => "Este script solo acepta solicitudes GET."]);
 }
 
 
