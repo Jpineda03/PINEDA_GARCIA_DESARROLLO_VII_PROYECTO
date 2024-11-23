@@ -2,7 +2,7 @@ var DETALLE_OBJ = {
 
 }
 
-export const mostrar_detalles_libros = (DETALLE_OBJ) => {
+export const detallasGenerales = (DETALLE_OBJ) => {
 
 
 let urlParams = new URLSearchParams(window.location.search);
