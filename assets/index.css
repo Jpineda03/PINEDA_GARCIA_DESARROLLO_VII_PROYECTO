@@ -312,6 +312,8 @@ body{
     align-items: center;
 }
 
+
+
 .detalle_receta_contenedor{
     background-color: white;
     width: 90%;
@@ -321,7 +323,6 @@ body{
     color: #616161;
     gap: 20px;
 }
-
 .detalle_receta_detalles{
     background-color: white;
     width: 70%;
@@ -333,16 +334,8 @@ body{
 
     justify-content: space-between;
 }
-
-.detalle_receta_detalles_opciones{
-    gap:20px;
-    align-items: center;
-    justify-content: end;
-
-}
-
 .detalle_receta_detalles_informacion{
-    gap:120px;
+    /* gap:120px; */
     /* border-style: solid; */
     height: -webkit-fill-available;
     
@@ -397,19 +390,69 @@ body{
 
 }
 
-.detalle_contenedor_pasos_receta{
+
+
+
+.detalle_contenedor_imagenes{
     overflow-y: scroll;
     height: 100%;
     gap:20px;
 }
 
-.detalle_contenedor_pasos_receta::-webkit-scrollbar {
+.detalle_contenedor_imagenes::-webkit-scrollbar {
     display: none;
 }
 
-.detalle_contenedor_pasos_receta >img {
+.detalle_contenedor_imagenes_img {
     height: 90%;
     width: 100%;
 }
+
+
+
+
+
+.contenedor_detalles_inf{
+    /* border-style: solid; */
+    gap:40px;
+    
+}
+.contenedor_detalles_inf_comentarios {
+    gap: 10px;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 10px;
+    
+    
+}
+.contenedor_detalles_inf_opciones {
+    gap:20px;
+    align-items: center;
+    justify-content: end; 
+}
+
+.detalles_comentarios_usuarios{
+    height: 150px;
+    border-radius: 10px;
+}
+.detalle_titulo_comentario{
+    font-weight: bold;
+    border-style: none none solid none;
+   padding-bottom: 10px;
+    
+}
+.text_area_detalles{
+    margin: 10px;
+    padding:20px; 
+    margin-bottom: 20px; 
+    margin-top: 20px;
+    
+    height: 10vh;
+    width: 100%;
+
+    border-style: solid;
+    border-radius: 10px;
+}
+
 
 
