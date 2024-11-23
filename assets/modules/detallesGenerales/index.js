@@ -1,6 +1,8 @@
-import 'index.css';
+DETALLE_OBJ = {
 
-export const mostrar_detalles_libros = (titulo_libro, descripcion, imagen, autor, ano_publicacion, my_book_id, resena_personal) => {
+}
+
+export const mostrar_detalles_libros = (DETALLE_OBJ) => {
     
     let  urlParams = new URLSearchParams(window.location.search);
     

@@ -152,6 +152,14 @@
       </div>
 
     </div>
+
+    <div id="detalle_libro" class=" detalle_libro row">
+
+    pronto regresamos
+
+    </div>
+
+    
    
         
   </body>
