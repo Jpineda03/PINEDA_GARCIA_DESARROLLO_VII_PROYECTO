@@ -43,6 +43,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* border-style: solid; */
     
 }
 
@@ -71,6 +72,9 @@ body{
     /* border-style: solid; */
     /* color: b lack; */
     gap: 20px;
+
+    justify-content: center;
+    align-items: center;
    
 }
 
@@ -183,8 +187,9 @@ body{
     flex-direction: row;
     width: 100vw;
     /* flex-wrap: wrap; */
-    /*height: -webkit-fill-available; */
+    height: 80vh;
     /* border-style: solid; */
+    justify-content: center;
 }
 
 /*FORMULARIO DE LOGIN*/

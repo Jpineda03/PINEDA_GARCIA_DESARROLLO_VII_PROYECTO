@@ -3,7 +3,7 @@ export const Receta = (OBJECT_RECETA) => {
     return `
         <div class="componente_receta row">
 
-            <img class="componente_recetas_imagen" src='.\assets\images\receta_presentacion.png' class="shadow" height="100%">
+            <img class="componente_recetas_imagen" src='./assets/images/receta_presentacion.png' class="shadow" height="100%">
 
             <div class="componente_receta_contenedor_der col" style="position: relative;">
 
@@ -11,12 +11,12 @@ export const Receta = (OBJECT_RECETA) => {
 
                     <label class="componente_receta_titulo row">
 
-                        <b>${titulo_receta}</b>
+                        <b>{titulo_receta}</b>
 
                     </label>
 
                     <div class="componente_receta_descripcion">
-                        ${descripcion}
+                        {descripcion}
 
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rem numquam, placeat repellat delectus
                         cumque sed quidem. Incidunt, provident possimus error magnam eligendi totam id repudiandae ratione
@@ -32,7 +32,7 @@ export const Receta = (OBJECT_RECETA) => {
 
                 <div class="componente_receta_contenedor_der_inf row">
 
-                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> ${autor} </div>
+                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> {autor} </div>
 
                     <div class="componente_receta_stars">
                         

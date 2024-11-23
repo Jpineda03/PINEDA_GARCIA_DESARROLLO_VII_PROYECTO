@@ -3,10 +3,11 @@
 <head>
   <title> Curso general de PHP</title>
   <link rel="stylesheet" href="./assets/index.css">
-  <link rel="stylesheet" href="./assets/modules/Recetas/index.css">
+  
 </head>
 
 <body>
+  
   <header class="header_principal">
 
     <div class='header-contenedor-izq'>
@@ -36,11 +37,10 @@
 
   </header>
 
-  <div class="contenedor-principal">
+  <div id="contenido_dinamico" class="contenedor-principal">
 
     <div id='elemente_1' class="contenedor-izquierdo open"
       style="background-image: url('./assets/images/receta_presentacion.png'); background-repeat: no-repeat; background-size: cover;">
-
     </div>
 
     <div class="contenedor-derecho">
@@ -208,6 +208,10 @@
 
   </div>
 
+
+
+
+
   <div id="login" class="barra_formulario_login col close">
 
     <div class="login_opciones_close row">
@@ -282,15 +286,15 @@
 
   </div>
 
-
-  <div id="detalle" class="close detalle row">
-
-    
-  </div>
+  <div id="detalle" class="close detalle row"></div>
 
 </body>
 
 <script type="module" src="./assets/main.js"></script>
+
+<link rel="stylesheet" href="./assets/modules/Recetas/index.css">
+<link rel="stylesheet" href="./assets/modules/contenedorRecetas/index.css">
+<link rel="stylesheet" href="./assets/modules/detallesGenerales/index.css">
 
 
 </html>
