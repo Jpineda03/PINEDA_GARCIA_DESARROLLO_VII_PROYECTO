@@ -44,17 +44,18 @@ class Recetario {
 
 
     // GUARDAR RECETAS EN LA BASE DE DATOS
-    public function guardarReceta($titulo, $ingredientes, $instrucciones, $autor_id) {
-        $query = "INSERT INTO recetas (titulo, ingredientes, instrucciones, autor_id, fecha_creacion) VALUES (?, ?, ?, ?, NOW())";
+    public function guardarReceta($titulo, $descripcion, $tipo, $usuario_id) {
+        $query = "INSERT INTO recetas (titulo, descripcion, tipo, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssi", $titulo, $ingredientes, $instrucciones, $autor_id);
-
+        $stmt->bind_param("sssi", $titulo, $descripcion, $tipo, $usuario_id);
+        
         if ($stmt->execute()) {
-            return "Receta guardada exitosamente.";
+            return "Receta guardada correctamente.";
         } else {
-            return "Error al guardar la receta: " . $this->conexion->error;
+            return "Error al guardar la receta: " . $stmt->error;
         }
     }
+    
 
 
     public function guardarIngredientes($ingredientes, $receta_id) {
