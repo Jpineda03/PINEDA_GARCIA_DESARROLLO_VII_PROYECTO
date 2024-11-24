@@ -19,7 +19,7 @@
     
     
     color: #616161;
-    gap: 20px;
+    gap: 50px;
 }
 
 .detalle_receta_detalles{
@@ -29,6 +29,8 @@
     
     padding: 50px;
     color: #616161;
+
+    gap:50px;
     
 
     justify-content: space-between;
@@ -38,7 +40,12 @@
     gap:40px;
     /* border-style: solid; */
     height: -webkit-fill-available;
-    
+    overflow-y: scroll;
+
+}
+
+.detalle_receta_detalles_informacion::-webkit-scrollbar{
+    display: none;
 
 }
 
@@ -56,13 +63,15 @@
     
     font-size: 16px;
     text-align: justify;
-    height: 100px;
+    min-height: 100px;
     overflow: scroll;
     overflow-x: hidden;
 
 }
 
 .detalle_receta_detalles_informacion_agregar {
+
+    /* height: 150px; */
     gap:20px;
 }
 
@@ -82,7 +91,7 @@
     position: absolute; 
     top:0px; 
     right: 40px; 
-    height: 80px; 
+    height: 60px; 
     width: 60px; 
     border-style: solid; 
     z-index: 101; 
@@ -168,6 +177,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px;
+    height: 200px;
 
 }
 
@@ -200,7 +210,5 @@
     justify-content: space-between;
 }
 
-.contenedor_agregar{
-    justify-content: space-between;
-}
+
 

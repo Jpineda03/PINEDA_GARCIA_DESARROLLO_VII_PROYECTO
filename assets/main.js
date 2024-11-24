@@ -21,7 +21,9 @@ const libro_buscado = "php";
 const listar_recetas = () => {
 
     contenido_dinamico.innerHTML = "";
-    let HTML = ""
+
+    let HTML = "";
+    
     for (let index = 0; index < 5; index++) {
         
          HTML += Receta();
@@ -38,6 +40,11 @@ const abrir_detalles = () => {
     toggle_element('detalle');
     detalle.innerHTML = detallasGenerales();
 }
+
+
+
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
     //listar_recetas()

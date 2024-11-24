@@ -61,7 +61,8 @@ return `
           <div class="detalle_titulo_comentario"> Pasos: </div>
 
           <div class="pasos_receta">
-            1. Aqui ira tu primera paso de receta.
+            1. Aqui ira tu primera paso de receta. <br>
+           
 
           </div>
 

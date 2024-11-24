@@ -1,7 +1,11 @@
+/***
+ * OBJ = { titulo, imagen, descripcion, autor, cantidad_estrellas + comentario}
+ */
+
 export const Receta = (OBJECT_RECETA) => {
 
     return `
-        <div class="componente_receta row shadow">
+        <div class="componente_receta row shadow clickeable">
 
             <img class="componente_recetas_imagen" src='./assets/images/receta_presentacion.png' class="shadow" height="100%">
 
