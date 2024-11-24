@@ -41,4 +41,5 @@
        echo json_encode(["error" => "Este script solo acepta solicitudes GET."]);
    }   
 
+
 ?>
