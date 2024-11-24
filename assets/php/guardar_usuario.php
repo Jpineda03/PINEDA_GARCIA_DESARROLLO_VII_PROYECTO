@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     require_once('Recetario.php');  // Asegúrate de que este archivo existe y está bien incluido
 
@@ -37,15 +38,17 @@
             header("Location: http://localhost/PROYECTO");
                 
          
+            // Mostrar el mensaje que devuelve la función
+        echo json_encode(["mensaje" => $mensaje]);
 
-            // Cerrar la conexión después de completar la operación
-            $conexion->close();
-        } else {
-            echo "Faltan parámetros: nombre, email o contraseña.";
-        }
+        // Cerrar la conexión después de completar la operación
+        $conexion->close();
     } else {
-        echo "Este script solo procesa solicitudes GET.";
+        echo json_encode(["error" => "Faltan parámetros: nombre, email o contraseña."]);
     }
+} else {
+    echo json_encode(["error" => "Este script solo procesa solicitudes POST."]);
+}
 
 
 ?>
