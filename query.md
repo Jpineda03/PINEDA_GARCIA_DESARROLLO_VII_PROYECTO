@@ -87,3 +87,9 @@ CREATE TABLE IF NOT EXISTS `pasos` (
   CONSTRAINT `pasos_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas` (`id`) ON DELETE CASCADE,
   CONSTRAINT `pasos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Insertar tipos de receta
+INSERT INTO `tipos` (`id`, `nombre`) VALUES 
+(0, 'chino'),
+(1, 'pollo'),
+(2, 'res');

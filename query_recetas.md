@@ -1,12 +1,3 @@
--- Insertar tipos de receta
-INSERT INTO `tipos` (`id`, `nombre`) VALUES 
-(0, 'chino'),
-(1, 'pollo');
-(2, 'res');
-
-
------
-
 -- Insertar usuarios
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contrasena`) VALUES 
 (1, 'Juan Pérez', 'juan@example.com', 'password123'),
