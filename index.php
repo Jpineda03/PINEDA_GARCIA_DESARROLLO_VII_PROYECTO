@@ -25,7 +25,7 @@
   <header class="header_principal">
 
     <div class='header-contenedor-izq'>
-      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      <svg onclick="redirigir('/PROYECTO')" class="clickeable" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" height"50" width='50' viewBox="0 0 212.926 212.926"
         style="enable-background:new 0 0 212.926 212.926;" xml:space="preserve">
         <g>
