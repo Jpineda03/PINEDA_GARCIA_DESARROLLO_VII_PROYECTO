@@ -9,16 +9,36 @@ class Recetario {
     }
 
       // FUNCION PARA VALIDAR SI EL USUARIO EXISTE
-    public function validarUsuario($email) {
-        $query = "SELECT id FROM usuarios WHERE email = ?";
+    public function validarUsuario($email, $contraseña) {
+        $query = "SELECT id FROM usuarios WHERE email = ? and contrasena = ?";
+        
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("ss", $email, $contraseña);
         $stmt->execute();
         $stmt->store_result();
       
         // Retorna true si el usuario ya existe, de lo contrario false
         return $stmt->num_rows > 0;
     }
+
+    public function obtenerUsuario($email) {
+        $query = "SELECT nombre, email FROM usuarios WHERE email = ?";
+        
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        
+        $resultado = $stmt->get_result();
+        
+        if ($resultado->num_rows > 0) {
+            // Devuelve los datos del usuario como un arreglo asociativo
+            return $resultado->fetch_assoc();
+        } else {
+            // Devuelve null si no encuentra el usuario
+            return null;
+        }
+    }
+    
 
     // GUARDAR Y REGISTRAR USUARIOS EN LA BASE DE DATOS
     public function guardarUsuario($nombre, $email, $contraseña) {
@@ -31,7 +51,7 @@ class Recetario {
         // Insertar el usuario
         $query = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $password_hash = password_hash($contraseña, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
+        $password_hash = $contraseña;
         $stmt->bind_param("sss", $nombre, $email, $password_hash);
 
         if ($stmt->execute()) {
@@ -125,6 +145,7 @@ class Recetario {
         $resultado = $stmt->get_result();
 
         $recetas = [];
+        
         while ($receta = $resultado->fetch_assoc()) {
             $recetas[] = $receta;
         }
