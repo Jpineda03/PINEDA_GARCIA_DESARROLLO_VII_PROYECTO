@@ -5,8 +5,9 @@ require_once 'recetario.php';
 session_start(); // Iniciar la sesión al comienzo del archivo
 
 if (!isset($_SESSION['id_usuario'])) {
-    $_SESSION['id_usuario'] = 2; // Simular un usuario autenticado
+    $_SESSION['id_usuario'] = 1; // Simular un usuario autenticado
 }
+
 
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "recetas");
@@ -19,14 +20,14 @@ if ($conexion->connect_error) {
 // Verificar si el método de solicitud es GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Verificar que los parámetros necesarios están presentes
-    if (isset($_SESSION['id_usuario'], $_GET['titulo'], $_GET['descripcion'], $_GET['id_tipo'], $_GET['ingrediente'], $_GET['paso_numero'])) {
+    if (isset($_SESSION['id_usuario'], $_GET['titulo'], $_GET['descripcion'], $_GET['id_tipo'], $_GET['ingrediente'], $_GET['descripcion'])) {
         // Obtener los datos del formulario
         $usuario_id = $_SESSION['id_usuario'];
         $titulo = trim($_GET['titulo']);
         $descripcion = trim($_GET['descripcion']);
         $tipo = trim($_GET['id_tipo']);
         $ingredientes = json_decode($_GET['ingrediente'], true); // Decodificar el JSON de ingredientes
-        $pasos = json_decode($_GET['paso_numero'], true); // Decodificar el JSON de pasos
+        $pasos = json_decode($_GET['descripcion'], true); // Decodificar el JSON de pasos
 
         // Crear una instancia de la clase Recetario
         $recetario = new Recetario($conexion);
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     } else {
         // Si faltan parámetros o el usuario no está autenticado
-        echo json_encode(["error" => "Faltan parametros o usuario no autenticado."]);
+        echo json_encode(["error" => "Faltan parámetros o usuario no autenticado."]);
     }
 } else {
     // Si no es una solicitud GET
