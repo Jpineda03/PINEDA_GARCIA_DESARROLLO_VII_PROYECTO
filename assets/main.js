@@ -16,21 +16,26 @@ const urlParams = new URLSearchParams(window.location.search);
 
 // VALORES POR DEFECTO DEL API DE GOOGLE BOOKS.
 const API_RECETAS = 'http://localhost/PROYECTO/assets/php/listar_recetas.php';
-const cantidad_receta = 40;
-const libro_buscado = "php";
+// const cantidad_receta = 40;
+// const libro_buscado = "php";
 
-var array_pasos = [];
-var array_ingredientes = [];
+// var array_pasos = [];
+// var array_ingredientes = [];
 
-const listar_recetas = async () => {
+const listar_recetas = async (id_tipo = "") => {
 
     let recetas = [];
     let HTML = "";
     let id = 0;
-    recetas = await request(API_RECETAS);
-    contenido_dinamico.innerHTML = "";
 
-    
+    //  // Crear la URL con el filtro de tipo si se ha pasado
+    let url = API_RECETAS;
+    if (id_tipo !== "") {
+    url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
+    }
+     
+    recetas = await request(url);
+    contenido_dinamico.innerHTML = "";
 
     if( !recetas.error ){
         recetas.forEach(element => {

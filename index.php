@@ -76,7 +76,7 @@
 
       <div class='main_container'>
 
-        <div onclick='abrir_detalles()' class='receta' style='background-image: url("assets/images/image-animal.jpg");'>
+        <div onclick='listar_recetas(1)' class='receta' style='background-image: url("assets/images/image-animal.jpg");'>
           <div class='receta-contenido'>
             <svg viewBox="0 0 24 24" fill="none" height="50%" width="50%" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -90,7 +90,7 @@
           </div>
         </div>
 
-        <div class='receta' style='background-image: url("assets/images/image.png");'>
+        <div onclick= 'listar_recetas(2)' class='receta' style='background-image: url("assets/images/image.png");'>
           <div class='receta-contenido'>
             <svg height="50%" width="50%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
@@ -115,7 +115,7 @@
           </div>
         </div>
 
-        <div class='receta' style='background-image: url("assets/images/image.png");'>
+        <div onclick= 'listar_recetas(3)' class='receta' style='background-image: url("assets/images/image.png");'>
           <div class='receta-contenido'>
             <svg height="50%" width="50%" fill="#ffffff" viewBox="0 0 14 14" role="img" focusable="false"
               aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
