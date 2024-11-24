@@ -1,14 +1,14 @@
 <?php
 
-session_start();
+  session_start();
 
-if (isset($_SESSION['nombre'], $_SESSION['email'])) {
-  print_r($_SESSION);
-  $user_information['nombre'] = $_SESSION['nombre'];
-  $user_information['email'] = $_SESSION['email'];
-  // echo 'Sesion iniciada';
+  if (isset($_SESSION['nombre'], $_SESSION['email'])) {
+    
+    $user_information['nombre'] = $_SESSION['nombre'];
+    $user_information['email'] = $_SESSION['email'];
+    
 
-}
+  }
 
 ?>
 
