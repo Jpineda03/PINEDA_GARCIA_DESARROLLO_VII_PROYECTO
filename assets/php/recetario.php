@@ -100,7 +100,6 @@ class Recetario {
     }
     
 
-
     public function guardarIngredientes($ingredientes, $receta_id) {
         $query = "INSERT INTO ingredientes (nombre, cantidad, id_receta) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
@@ -115,36 +114,21 @@ class Recetario {
   
     }
 
-    //GUARDAR IMAGENES AL CARGAR LAS RECETAS
-    public function guardarImagen($receta_id, $imagen) {
-        // Verificar si la imagen se subió sin errores
-        if ($imagen['error'] !== UPLOAD_ERR_OK) {
-            return "Error al subir la imagen.";
-        }
+    public function guardarImagen($receta_id, $imagen_datos, $tipo_imagen) {
+        // Insertar la imagen en la base de datos
+        $query = "INSERT INTO imagenes_recetas (receta_id, imagen, tipo_imagen) VALUES (?, ?, ?)";
+        $stmt = $this->conexion->prepare($query);
     
-        // Definir el nombre y el destino de la imagen
-        $imagen_nombre = "imagen_" . time() . "." . pathinfo($imagen['name'], PATHINFO_EXTENSION);
-        $directorio_destino = "uploads/";
+        // Usar 'b' para los datos binarios de la imagen
+        $stmt->bind_param("isb", $receta_id, $imagen_datos, $tipo_imagen);
     
-        // Mover la imagen al directorio destino
-        if (move_uploaded_file($imagen['tmp_name'], $directorio_destino . $imagen_nombre)) {
-            // Guardar la ruta de la imagen en la base de datos
-            $query = "INSERT INTO imagenes (id_receta, imagen_url) VALUES (?, ?)";
-            $stmt = $this->conexion->prepare($query);
-            $stmt->bind_param("is", $receta_id, $directorio_destino . $imagen_nombre);
-            if ($stmt->execute()) {
-                return "Imagen guardada correctamente.";
-            } else {
-                return "Error al guardar la imagen en la base de datos.";
-            }
-          
+        if ($stmt->execute()) {
+            return "Imagen guardada exitosamente.";
         } else {
-            return "Error al mover la imagen.";
+            return "Error al guardar la imagen: " . $stmt->error;
         }
-
     }
     
-
     // MODIFICAR RECETAS EN LA BASE DE DATOS
 
     public function modificarReceta($receta_id, $titulo, $descripcion, $ingredientes, $instrucciones) {
