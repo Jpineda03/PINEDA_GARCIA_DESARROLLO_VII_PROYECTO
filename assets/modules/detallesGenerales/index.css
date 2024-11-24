@@ -66,6 +66,10 @@
     min-height: 100px;
     overflow: scroll;
     overflow-x: hidden;
+    
+    display: flex;
+    align-items: center;
+    
 
 }
 
@@ -199,7 +203,16 @@
 
 .text_area_ingredientes{
     height:25px;
-    width: 90%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    padding: 2.5px 10px;
+
+}
+
+.text_area_cantidades_{
+    height:25px;
+    width: 40%;
     display: flex;
     align-items: center;
     padding: 2.5px 10px;
@@ -208,6 +221,13 @@
 
 .contenedor_agregar{
     justify-content: space-between;
+}
+
+.contenedor_detallesGenerales_ingredientes {
+    padding: 5px;
+    width: 33%;
+    text-align: start;
+
 }
 
 

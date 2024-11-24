@@ -1,4 +1,4 @@
-PRIMERO HAY QUE AGREGAR LA TABLA TIPOS
+--PRIMERO HAY QUE AGREGAR LA TABLA TIPOS
 
 CREATE TABLE `tipos` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -6,7 +6,7 @@ CREATE TABLE `tipos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-luego inserto los tipos: 
+--uego inserto los tipos: 
 
 INSERT INTO tipos (nombre) 
 VALUES 
@@ -15,14 +15,14 @@ VALUES
 ('Res');
 
 
-LUEGO MODIFICA LA TABLA DE RECETAS
+--LUEGO MODIFICA LA TABLA DE RECETAS
 
 ALTER TABLE recetas
 ADD COLUMN imagen VARCHAR(255) DEFAULT NULL,
 ADD COLUMN id_tipo INT NOT NULL,
 ADD CONSTRAINT fk_id_tipo FOREIGN KEY (id_tipo) REFERENCES tipos(id) ON DELETE CASCADE;
 
-CON ESTE CREAMOS DOS RECETAS DE TIPO 1 = POLLO
+--CON ESTE CREAMOS DOS RECETAS DE TIPO 1 = POLLO
 
 INSERT INTO recetas (titulo, descripcion, id_usuario, id_tipo)
 VALUES ('Pollo al Horno con Papas', 'Delicioso pollo al horno acompañado de papas asadas, ideal para una comida en familia.', 1, 1);
@@ -47,7 +47,7 @@ VALUES
 (1, 'Pimienta', 'al gusto');
 
 
-RECETA DOS DE TIPO 1 = POLLO
+--RECETA DOS DE TIPO 1 = POLLO
 
 INSERT INTO recetas (titulo, descripcion, id_usuario, id_tipo)
 VALUES ('Pollo en Salsa de Mostaza y Miel', 'Un plato con una deliciosa mezcla de mostaza y miel, perfecto para una cena especial.', 1, 1);
