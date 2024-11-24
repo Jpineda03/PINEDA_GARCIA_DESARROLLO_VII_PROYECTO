@@ -319,7 +319,7 @@
 
               </div>
 
-              <div class='card shadow clickeable' onclick='listar_recetas()'>
+              <div class='card shadow clickeable' onclick='mostrat_lista_favoritos()'>
                 <b>MOSTRAR LISTA DE FAVORITOS</b>
               </div>
 
