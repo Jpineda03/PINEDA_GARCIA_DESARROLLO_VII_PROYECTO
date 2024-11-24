@@ -13,7 +13,7 @@
             // Acceder a los parámetros pasados por la URL (GET)
             $nombre = $_POST['nombre'];
             $email = $_POST['email'];
-            $contraseña = password_hash($_POST['contraseña'], PASSWORD_BCRYPT); // Encriptar la contraseña
+            $contraseña = $_POST['contraseña']; // Encriptar la contraseña
 
             // Verificar si la conexión fue exitosa
             if ($conexion->connect_error) {
@@ -28,10 +28,7 @@
 
             // Mostrar el mensaje que devuelve la función
 
-            
-
-            
-                
+        
             $_SESSION["nombre"]= $nombre;
             $_SESSION["email"]= $email;
             
