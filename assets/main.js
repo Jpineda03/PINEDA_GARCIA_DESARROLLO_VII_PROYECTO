@@ -6,6 +6,7 @@ import { contenedorRecetas } from "./modules/contenedorRecetas/index.js";
 
 var detalle = document.getElementById('detalle');
 var contenido_dinamico = document.getElementById('contenido_dinamico');
+var formulario_login = document.getElementById('formulario_login');
 
 var arreglo_recetas = "";
 var arreglo_recetas_detalle = "";
@@ -36,6 +37,8 @@ const abrir_detalles = () => {
     toggle_element('detalle');
     detalle.innerHTML = detallasGenerales();
 }
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
     //listar_recetas()
