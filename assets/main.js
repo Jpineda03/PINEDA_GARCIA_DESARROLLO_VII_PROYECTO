@@ -131,7 +131,13 @@ const agregar_receta = () => {
     let element_2 = document.getElementById('agregar_receta_descripcion');
     let element_3 = document.getElementById('agregar_receta_tipo');
 
-    request(`/PROYECTO/assets/php/guardar_recetas.php?titulo=${element_1.value}&descripcion=${element_2.value}&id_tipo=${element_3.value}`).then(
+    
+
+    let arreglo_pasos = array_pasos.join(',');
+    let arreglo_ingredientes = JSON.stringify(array_ingredientes);
+
+
+    request(`/PROYECTO/assets/php/guardar_recetas.php?titulo=${element_1.value}&descripcion=${element_2.value}&id_tipo=${element_3.value}&ingrediente=${arreglo_ingredientes}&pasos=${arreglo_pasos}`).then(
         () => {
             toggle_element('detalle');
             sin_recetas( listar_recetas());
@@ -139,6 +145,9 @@ const agregar_receta = () => {
 
         }
     );
+
+    array_ingredientes = [];
+    array_pasos = [];
 
 }
 

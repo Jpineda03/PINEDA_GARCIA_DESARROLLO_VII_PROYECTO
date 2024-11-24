@@ -99,33 +99,40 @@ class Recetario {
         }
     }
       
-    public function guardarIngredientes($ingredientes, $receta_id) {
-        $query = "INSERT INTO ingredientes (id_receta, ingrediente, cantidad) VALUES (?, ?, ?)";
+    public function guardarIngredientes($ingredientes, $receta_id, $id_usuario) {
+
+        $query = "INSERT INTO ingredientes (id_receta, ingrediente, cantidad, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-    
-        foreach ($ingredientes as $ingrediente) {
-            $stmt->bind_param("iss", $receta_id, $ingrediente['ingrediente'], $ingrediente['cantidad']);
-            if (!$stmt->execute()) {
-                throw new Exception("Error al guardar ingredientes: " . $stmt->error);
-            }
+        $cantidad = "1";
+        
+        $stmt->bind_param("issi", $receta_id, $ingredientes, $cantidad, $id_usuario);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error al guardar ingredientes aqui: " . $stmt->error);
         }
+    
     
         return "Ingredientes guardados correctamente.";
     }
     
 
-    public function guardarPasos($pasos, $receta_id) {
-        $query = "INSERT INTO pasos (id_receta, paso_numero, descripcion) VALUES (?, ?, ?)";
+    public function guardarPasos($pasos, $receta_id, $user_id) {
+        $query = "INSERT INTO pasos (id_receta, paso_numero, descripcion, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
+        $paso = 0;
     
-        foreach ($pasos as $paso) {
-            $stmt->bind_param("iis", $receta_id, $paso['numero'], $paso['descripcion']);
-            if (!$stmt->execute()) {
-                throw new Exception("Error al guardar pasos: " . $stmt->error);
-            }
+        
+        $stmt->bind_param("iisi", $receta_id, $paso , $pasos, $user_id);
+        
+        if (!$stmt->execute()) {
+
+            throw new Exception("Error al guardar pasos: " . $stmt->error);
+        }else{
+            
+            return "Pasos guardados correctamente.";
         }
+        
     
-        return "Pasos guardados correctamente.";
     }
     
     public function guardarRecetaCompleta($titulo, $descripcion, $tipo, $usuario_id, $ingredientes, $pasos) {

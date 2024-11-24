@@ -4,9 +4,9 @@ require_once 'recetario.php';
 
 session_start(); // Iniciar la sesión al comienzo del archivo
 
-if (!isset($_SESSION['id_usuario'])) {
-    $_SESSION['id_usuario'] = 1; // Simular un usuario autenticado
-}
+// if (!isset($_SESSION['id_usuario'])) {
+//     $_SESSION['id_usuario'] = 1; // Simular un usuario autenticado
+// }
 
 
 // Conexión a la base de datos
@@ -20,15 +20,17 @@ if ($conexion->connect_error) {
 // Verificar si el método de solicitud es GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Verificar que los parámetros necesarios están presentes
-    if (isset($_SESSION['id_usuario'], $_GET['titulo'], $_GET['descripcion'], $_GET['id_tipo'], $_GET['ingrediente'], $_GET['descripcion'])) {
+    if (isset($_SESSION['id_usuario'], $_GET['titulo'], $_GET['descripcion'], $_GET['id_tipo'], $_GET['ingrediente'], $_GET['pasos'])) {
         // Obtener los datos del formulario
         $usuario_id = $_SESSION['id_usuario'];
         $titulo = trim($_GET['titulo']);
         $descripcion = trim($_GET['descripcion']);
         $tipo = trim($_GET['id_tipo']);
-        $ingredientes = json_decode($_GET['ingrediente'], true); // Decodificar el JSON de ingredientes
-        $pasos = json_decode($_GET['descripcion'], true); // Decodificar el JSON de pasos
 
+
+        $ingredientes = $_GET['ingrediente'];
+        $pasos = $_GET['pasos'];
+        
         // Crear una instancia de la clase Recetario
         $recetario = new Recetario($conexion);
 
@@ -38,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Verificar si la receta se guardó correctamente
         if (is_numeric($receta_id)) {
             // Guardar los ingredientes
-            $resultadoIngredientes = $recetario->guardarIngredientes($ingredientes, $receta_id);
+            $resultadoIngredientes = $recetario->guardarIngredientes($ingredientes, $receta_id, $usuario_id);
             
             // Guardar los pasos
-            $resultadoPasos = $recetario->guardarPasos($pasos, $receta_id);
+            $resultadoPasos = $recetario->guardarPasos($pasos, $receta_id, $usuario_id);
 
             // Mostrar el resultado en formato JSON
             echo json_encode(["mensaje" => "Receta, ingredientes y pasos guardados correctamente.", "ingredientes" => $resultadoIngredientes, "pasos" => $resultadoPasos]);

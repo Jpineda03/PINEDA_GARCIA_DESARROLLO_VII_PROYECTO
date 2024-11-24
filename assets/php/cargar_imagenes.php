@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Mostrar el resultado en formato JSON o mensaje
         echo json_encode(["mensaje" => $mensaje]);
     } else {
-        echo json_encode(["error" => "Faltan parámetros en la solicitud."]);
+        echo json_encode(["error" => "ámetros en la solicitud."]);
     }
 } else {
     echo json_encode(["error" => "Este script solo acepta solicitudes POST."]);
