@@ -348,6 +348,9 @@
 <link rel="stylesheet" href="./assets/modules/Recetas/index.css">
 <link rel="stylesheet" href="./assets/modules/contenedorRecetas/index.css">
 <link rel="stylesheet" href="./assets/modules/detallesGenerales/index.css">
+<link rel="stylesheet" href="./assets/modules/detallesGeneralesEditar/index.css">
+
+
 
 
 </html>

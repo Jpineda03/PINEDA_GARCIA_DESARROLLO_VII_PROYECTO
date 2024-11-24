@@ -3,7 +3,7 @@ import { request } from "./modules/request/index.js";
 import { detallasGenerales } from "./modules/detallesGenerales/index.js";
 import { Receta } from "./modules/Recetas/index.js";
 import { contenedorRecetas } from "./modules/contenedorRecetas/index.js";
-import { detallasGeneralesEditar } from "./modules/detallesGenerales Editar/index.js";
+import { detallasGeneralesEditar } from "./modules/detallesGeneralesEditar/index.js";
 
 var detalle = document.getElementById('detalle');
 var contenido_dinamico = document.getElementById('contenido_dinamico');
@@ -25,13 +25,13 @@ var array_ingredientes = [];
 const listar_recetas = async () => {
 
     let recetas = [];
+    let HTML = "";
+    let id = 0;
     recetas = await request(API_RECETAS);
     contenido_dinamico.innerHTML = "";
 
-    let HTML = "";
-    let id = 0;
-    if(recetas.length > 0 ){
 
+    if(recetas.length > 0 ){
         recetas.forEach(element => {
             HTML += Receta(element, id);
             id++;
@@ -40,9 +40,9 @@ const listar_recetas = async () => {
         alert('SIN FAVORITOS PARA MOSTRAR');
         redirigir('/PROYECTO/');
     }
-    
-
     toggle_element('login');
+
+   
     contenido_dinamico.innerHTML += contenedorRecetas(HTML);
 
 }
@@ -119,7 +119,7 @@ const agregar_pasos = (element_0, element_1, element_2) => {
 const agregar_nueva_receta = () => {
     contenido_dinamico.innerHTML = "";
     toggle_element('detalle');
-    toggle_element('login');
+    listar_recetas();
     detalle.innerHTML = detallasGeneralesEditar("", "", 'none', "none", 'flex');
 }
 
