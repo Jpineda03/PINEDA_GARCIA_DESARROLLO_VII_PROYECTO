@@ -15,7 +15,7 @@ class Recetario {
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
-
+      
         // Retorna true si el usuario ya existe, de lo contrario false
         return $stmt->num_rows > 0;
     }
@@ -23,20 +23,22 @@ class Recetario {
     // GUARDAR Y REGISTRAR USUARIOS EN LA BASE DE DATOS
     public function guardarUsuario($nombre, $email, $contraseña) {
         // Verificar si el usuario ya existe utilizando la función validarUsuario
-        if ($this->validarUsuario($email)) {
-            return "El correo electrónico ya está registrado.";
+       
+        if ($stmt->num_rows > 0) {
+            echo '{ "msg": "El correo electrónico ya está registrado."}';
         }
 
         // Insertar el usuario
-        $query = "INSERT INTO usuarios (nombre, email, contraseña) VALUES (?, ?, ?)";
+        $query = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
         $password_hash = password_hash($contraseña, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
         $stmt->bind_param("sss", $nombre, $email, $password_hash);
 
         if ($stmt->execute()) {
-            return "Usuario registrado exitosamente.";
+            echo true;
         } else {
-            return "Error al registrar el usuario: " . $this->conexion->error;
+            echo false;
+           
         }
     }
 
