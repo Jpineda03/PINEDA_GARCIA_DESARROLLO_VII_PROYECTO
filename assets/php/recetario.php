@@ -59,7 +59,32 @@ class Recetario {
         }
     }
     
-
+    //listar las recetas que hay en la base de datos
+    public function listarRecetas() {
+        // Consulta SQL para obtener todas las recetas
+        $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
+                  FROM recetas r
+                  JOIN usuarios u ON r.id_usuario = u.id";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        $recetas = [];
+    
+        // Recorrer los resultados y almacenarlos en un array
+        while ($receta = $resultado->fetch_assoc()) {
+            $recetas[] = $receta;
+        }
+    
+        // Si no se encontraron recetas, retornar un mensaje adecuado
+        if (empty($recetas)) {
+            return "No se encontraron recetas.";
+        }
+    
+        // Retornar las recetas encontradas
+        return $recetas;
+    }
+    
 
     // GUARDAR RECETAS EN LA BASE DE DATOS
     public function guardarReceta($titulo, $descripcion, $tipo, $usuario_id) {
