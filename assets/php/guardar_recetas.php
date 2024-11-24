@@ -10,11 +10,6 @@ if (!isset($_SESSION['id_usuario'])) {
     exit(); // Detener la ejecución si no hay sesión
 }
 
-// Simular sesión activa (solo para pruebas)
-//if (!isset($_SESSION['id_usuario'])) {
-   // $_SESSION['id_usuario'] = 1; // Simular usuario autenticado
-//}
-
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "recetas");
 

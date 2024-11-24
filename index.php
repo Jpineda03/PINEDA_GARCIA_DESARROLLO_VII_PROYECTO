@@ -29,6 +29,7 @@
 
       echo "<div class='row login_msg'>SESSION INICIADA</div>";
       
+      
 
     }else {
       echo "<div class='row login_msg'>SESSION NO INICIADA</div>";

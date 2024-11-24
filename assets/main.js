@@ -30,16 +30,21 @@ const listar_recetas = async () => {
     recetas = await request(API_RECETAS);
     contenido_dinamico.innerHTML = "";
 
-    if(recetas.length > 0 ){
+    
+
+    if( !recetas.error ){
         recetas.forEach(element => {
             HTML += Receta(element, id);
             id++;
         });
+
+        cargar_contenido_dinamico(HTML);
+        return await recetas.length;
+    }else{
+        return 0;
     }
 
-    cargar_contenido_dinamico(HTML);
 
-    return await recetas.length;
 
 }
 
@@ -150,18 +155,17 @@ const eliminar_favoritos = (id) => {
 }
 
 const sin_recetas = (cantidad) =>{
+
     
     if(!cantidad > 0 ){
         alert('Sin recetas disponibles para mostras Redirigiendo...');
         redirigir('/PROYECTO/');
     }
-
 }
 
-const close_tag = () => {
+const close_tag = async () => {
     toggle_element('detalle');
-    
-    sin_recetas( listar_recetas());
+    sin_recetas( await listar_recetas());
 
 }
 
@@ -169,8 +173,8 @@ const cargar_contenido_dinamico = (HTML) => {
     contenido_dinamico.innerHTML += contenedorRecetas(HTML);
 }
 
-const mostrat_lista_favoritos = () => {
-    sin_recetas(listar_recetas());
+const mostrat_lista_favoritos = async () => {
+    sin_recetas(await listar_recetas());
 }
 
 window.addEventListener('DOMContentLoaded', () => {
