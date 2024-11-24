@@ -323,6 +323,10 @@
                 <b>MOSTRAR LISTA DE FAVORITOS</b>
               </div>
 
+              <div class='card shadow clickeable' onclick='agregar_nueva_receta()'>
+                <b>AGREGAR RECETA</b>
+              </div>
+
             </div>
 
             <button id="logout" class='login_button login_button_logout clickeable'

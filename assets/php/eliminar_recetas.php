@@ -4,11 +4,12 @@
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        session_start(); // Iniciar sesión para obtener el ID del usuario
-    
+        
+        $conexion = new mysqli("localhost", "root", "", "recetas");
+
         // Verificar si se enviaron los parámetros necesarios
-        if (isset($_SESSION['user_id']) && isset($_GET['id'])) {
-            $usuario_id = $_SESSION['user_id']; // El ID del usuario desde la sesión
+        if (isset($_SESSION['id_usuario']) && isset($_GET['id'])) {
+            $usuario_id = $_SESSION['id_usuario']; // El ID del usuario desde la sesión
             $receta_id = $_GET['id']; // El ID de la receta a eliminar
     
             // Verificar la conexión a la base de datos

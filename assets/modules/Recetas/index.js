@@ -1,11 +1,32 @@
 /***
  * OBJ = { titulo, imagen, descripcion, autor, cantidad_estrellas + comentario}
+ * 
+ * 
+    autor
+    : 
+    "gabriel"
+    descripcion
+    : 
+    "Delicioso pollo al horno acompañado de papas asadas, ideal para una comida en familia."
+    fecha_creacion
+    : 
+    "2024-11-23 23:34:04"
+    id
+    : 
+    3
+    titulo
+    : 
+    "Pollo al Horno con Papas"
  */
 
-export const Receta = (OBJECT_RECETA) => {
+
+
+export const Receta = (OBJECT_RECETA, id) => {
+
+    
 
     return `
-        <div class="componente_receta row shadow clickeable">
+        <div id="receta_${id}" class="componente_receta row shadow clickeable" onclick='abrir_detalles(${JSON.stringify(OBJECT_RECETA)}, ${id})'>
 
             <img class="componente_recetas_imagen" src='./assets/images/receta_presentacion.png' class="shadow" height="100%">
 
@@ -15,28 +36,19 @@ export const Receta = (OBJECT_RECETA) => {
 
                     <label class="componente_receta_titulo row">
 
-                        <b>{titulo_receta}</b>
+                        <b>${OBJECT_RECETA.titulo}</b>
 
                     </label>
 
                     <div class="componente_receta_descripcion">
-                        {descripcion}
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rem numquam, placeat repellat delectus
-                        cumque sed quidem. Incidunt, provident possimus error magnam eligendi totam id repudiandae ratione
-                        quisquam
-                        libero non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nesciunt facere quo
-                        temporibus
-                        sapiente quasi rerum odit nobis accusamus dicta laudantium veniam distinctio iste, inventore voluptates
-                        error incidunt! Harum, sapiente.
-
+                        ${OBJECT_RECETA.descripcion}
                     </div>
 
                 </div>
 
                 <div class="componente_receta_contenedor_der_inf row">
 
-                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> {autor} </div>
+                    <div class="detalle_receta_detalles_informacion_autor"><b>Autor del receta:</b> ${OBJECT_RECETA.autor} </div>
 
                     <div class="componente_receta_stars">
                         

@@ -22,7 +22,7 @@ class Recetario {
     }
 
     public function obtenerUsuario($email) {
-        $query = "SELECT nombre, email FROM usuarios WHERE email = ?";
+        $query = "SELECT id, nombre, email FROM usuarios WHERE email = ?";
         
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $email);
@@ -90,7 +90,7 @@ class Recetario {
     public function guardarReceta($titulo, $descripcion, $tipo, $usuario_id) {
         $query = "INSERT INTO recetas (titulo, descripcion, id_tipo, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssi", $titulo, $descripcion, $tipo, $usuario_id);
+        $stmt->bind_param("ssii", $titulo, $descripcion, $tipo, $usuario_id);
         
         if ($stmt->execute()) {
             return "Receta guardada correctamente.";
