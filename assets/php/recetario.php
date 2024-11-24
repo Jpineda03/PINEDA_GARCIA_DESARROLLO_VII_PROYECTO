@@ -56,6 +56,21 @@ class Recetario {
         }
     }
 
+
+    public function guardarIngredientes($ingredientes, $receta_id) {
+        $query = "INSERT INTO ingredientes (nombre, cantidad, id_receta) VALUES (?, ?, ?)";
+        $stmt = $this->conexion->prepare($query);
+    
+        foreach ($ingredientes as $ingrediente) {
+            // Asegúrate de que el ingrediente tenga un nombre y cantidad válidos
+            $stmt->bind_param("ssi", $ingrediente['nombre'], $ingrediente['cantidad'], $receta_id);
+            $stmt->execute();
+        }
+    
+        return "Ingredientes guardados correctamente.";
+  
+    }
+
     //GUARDAR IMAGENES AL CARGAR LAS RECETAS
     public function guardarImagen($receta_id, $imagen) {
         // Verificar si la imagen se subió sin errores
@@ -78,9 +93,11 @@ class Recetario {
             } else {
                 return "Error al guardar la imagen en la base de datos.";
             }
+          
         } else {
             return "Error al mover la imagen.";
         }
+
     }
     
 
