@@ -28,6 +28,7 @@ const listar_recetas = () => {
         
     }
 
+    toggle_element('login');
     contenido_dinamico.innerHTML += contenedorRecetas(HTML);
 
 }
