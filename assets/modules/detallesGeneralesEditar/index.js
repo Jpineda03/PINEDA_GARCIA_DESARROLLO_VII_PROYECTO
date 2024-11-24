@@ -12,7 +12,7 @@ return `
       </div>
 
       <div class="detalle_receta_detalles col" style="position: relative;">
-        <div class="detalle_receta_detalles_informacion col">
+        <div class="detalle_receta_detalles_informacion col margen_top">
        
           <input id="agregar_receta_titulo" class="detalle_receta_detalles_informacion_titulo row" placeholder='titulo'>
           <input id='agregar_receta_descripcion' class="detalle_receta_detalles_informacion_descripcion" placeholder='descripcion'>
@@ -71,9 +71,9 @@ return `
             <select id="agregar_receta_tipo" name="color" height='50px'>
               
               <option value="" disabled selected>-- Selecciona una opción --</option>
-              <option value="8">China</option>
-              <option value="7">Pollo</option>
-              <option value="9">Res</option>
+              <option value="0">China</option>
+              <option value="1">Pollo</option>
+              <option value="2">Res</option>
               
             </select>
 
