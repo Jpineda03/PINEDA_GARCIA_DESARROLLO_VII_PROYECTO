@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('Recetario.php');  // Asegúrate de que este archivo existe y está bien incluido
+require_once('recetario.php');  // Asegúrate de que este archivo existe y está bien incluido
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "recetas");
@@ -16,8 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Crear una instancia de la clase Recetario
     $recetario = new Recetario($conexion);
 
-    // Llamar al método para listar todas las recetas
-    $recetas = $recetario->listarRecetas();
+    // Verificar si hay un tipo de receta en los parámetros GET
+    if (isset($_GET['tipo']) && !empty($_GET['tipo'])) {
+        $tipo = $_GET['tipo']; // Obtener el tipo de receta desde la URL
+        // Llamar al método para obtener las recetas filtradas por tipo
+        $recetas = $recetario->obtenerRecetas($tipo);
+    } else {
+        // Llamar al método para obtener todas las recetas
+        $recetas = $recetario->obtenerRecetas();
+    }
 
     // Verificar si se encontraron recetas
     if (is_array($recetas) && !empty($recetas)) {
@@ -33,4 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 // Cerrar la conexión
 $conexion->close();
+
 ?>

@@ -39,7 +39,6 @@ class Recetario {
         }
     }
     
-
     // GUARDAR Y REGISTRAR USUARIOS EN LA BASE DE DATOS
     public function guardarUsuario($nombre, $email, $contraseña) {
         // Validar formato del correo
@@ -59,13 +58,23 @@ class Recetario {
         }
     }
     
-    //listar las recetas que hay en la base de datos
-    public function listarRecetas() {
-        // Consulta SQL para obtener todas las recetas
-        $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
-                  FROM recetas r
-                  JOIN usuarios u ON r.id_usuario = u.id";
-        $stmt = $this->conexion->prepare($query);
+    //LISTAR O FILTRAR RECETAS
+    public function obtenerRecetas($tipo = null) {
+        // Si se proporciona un tipo de receta, filtrar por ese tipo, de lo contrario, listar todas las recetas
+        if ($tipo) {
+            $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
+                      FROM recetas r
+                      JOIN usuarios u ON r.id_usuario = u.id
+                      WHERE r.id_tipo = ?";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bind_param("s", $tipo);
+        } else {
+            $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
+                      FROM recetas r
+                      JOIN usuarios u ON r.id_usuario = u.id";
+            $stmt = $this->conexion->prepare($query);
+        }
+    
         $stmt->execute();
         $resultado = $stmt->get_result();
     
@@ -155,8 +164,7 @@ class Recetario {
             return "Error al guardar la receta completa: " . $e->getMessage();
         }
     }
-    
-    
+     
 
     //GUARDAR IMAGENES AL CARGAR LAS RECETAS
     public function guardarImagen($receta_id, $imagen) {
@@ -187,9 +195,7 @@ class Recetario {
 
     }
     
-
     // MODIFICAR RECETAS EN LA BASE DE DATOS
-
     public function modificarReceta($receta_id, $titulo, $descripcion, $ingredientes, $instrucciones) {
         $query = "UPDATE recetas SET titulo = ?, descripcion = ?, ingredientes = ?, instrucciones = ? WHERE id = ?";
         $stmt = $this->conexion->prepare($query);
@@ -201,26 +207,6 @@ class Recetario {
         } else {
             return "Error al modificar la receta: " . $this->conexion->error;
         }
-    }
-    // FILTRAR RECETAS POR TIPO
-    public function filtrarRecetasPorTipo($tipo) {
-        $query = "SELECT id, titulo, ingredientes, instrucciones, autor_id, fecha_creacion FROM recetas WHERE tipo = ?";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("s", $tipo);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-
-        $recetas = [];
-        
-        while ($receta = $resultado->fetch_assoc()) {
-            $recetas[] = $receta;
-        }
-
-        if (empty($recetas)) {
-            return "No se encontraron recetas de ese tipo.";
-        }
-
-        return $recetas;
     }
 
    // ELIMINAR RECETAS
