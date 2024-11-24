@@ -71,7 +71,7 @@ return `
             <select id="agregar_receta_tipo" name="color" height='50px'>
               
               <option value="" disabled selected>-- Selecciona una opción --</option>
-              <option value="0">China</option>
+              <option value="3">China</option>
               <option value="1">Pollo</option>
               <option value="2">Res</option>
               
