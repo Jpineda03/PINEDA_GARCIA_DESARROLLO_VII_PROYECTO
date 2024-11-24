@@ -1,29 +1,7 @@
-/***
- * OBJ = { titulo, imagen, descripcion, autor, cantidad_estrellas + comentario}
- * 
- * 
-    autor
-    : 
-    "gabriel"
-    descripcion
-    : 
-    "Delicioso pollo al horno acompañado de papas asadas, ideal para una comida en familia."
-    fecha_creacion
-    : 
-    "2024-11-23 23:34:04"
-    id
-    : 
-    3
-    titulo
-    : 
-    "Pollo al Horno con Papas"
- */
-
-
-
 export const Receta = (OBJECT_RECETA, id) => {
 
-    
+    OBJECT_RECETA.descripcion = OBJECT_RECETA.descripcion.replaceAll(/[^a-zA-Z0-9 ]/g, " ");
+    console.log(OBJECT_RECETA.descripcion);
 
     return `
         <div id="receta_${id}" class="componente_receta row shadow clickeable" onclick='abrir_detalles(${JSON.stringify(OBJECT_RECETA)}, ${id})'>
