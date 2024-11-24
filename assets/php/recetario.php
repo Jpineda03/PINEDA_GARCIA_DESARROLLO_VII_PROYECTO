@@ -91,29 +91,65 @@ class Recetario {
         $query = "INSERT INTO recetas (titulo, descripcion, id_tipo, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("ssii", $titulo, $descripcion, $tipo, $usuario_id);
-        
+    
         if ($stmt->execute()) {
-            return "Receta guardada correctamente.";
+            return $this->conexion->insert_id; // Devuelve el ID recién generado
         } else {
-            return "Error al guardar la receta: " . $stmt->error;
+            throw new Exception("Error al guardar la receta: " . $stmt->error);
         }
     }
-    
-
-
+      
     public function guardarIngredientes($ingredientes, $receta_id) {
-        $query = "INSERT INTO ingredientes (nombre, cantidad, id_receta) VALUES (?, ?, ?)";
+        $query = "INSERT INTO ingredientes (id_receta, ingrediente, cantidad) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
     
         foreach ($ingredientes as $ingrediente) {
-            // Asegúrate de que el ingrediente tenga un nombre y cantidad válidos
-            $stmt->bind_param("ssi", $ingrediente['nombre'], $ingrediente['cantidad'], $receta_id);
-            $stmt->execute();
+            $stmt->bind_param("iss", $receta_id, $ingrediente['ingrediente'], $ingrediente['cantidad']);
+            if (!$stmt->execute()) {
+                throw new Exception("Error al guardar ingredientes: " . $stmt->error);
+            }
         }
     
         return "Ingredientes guardados correctamente.";
-  
     }
+    
+
+    public function guardarPasos($pasos, $receta_id) {
+        $query = "INSERT INTO pasos (id_receta, paso_numero, descripcion) VALUES (?, ?, ?)";
+        $stmt = $this->conexion->prepare($query);
+    
+        foreach ($pasos as $paso) {
+            $stmt->bind_param("iis", $receta_id, $paso['numero'], $paso['descripcion']);
+            if (!$stmt->execute()) {
+                throw new Exception("Error al guardar pasos: " . $stmt->error);
+            }
+        }
+    
+        return "Pasos guardados correctamente.";
+    }
+    
+    public function guardarRecetaCompleta($titulo, $descripcion, $tipo, $usuario_id, $ingredientes, $pasos) {
+        $this->conexion->begin_transaction(); // Inicia la transacción
+    
+        try {
+            // Guardar la receta y obtener su ID
+            $receta_id = $this->guardarReceta($titulo, $descripcion, $tipo, $usuario_id);
+    
+            // Guardar los ingredientes
+            $this->guardarIngredientes($ingredientes, $receta_id);
+    
+            // Guardar los pasos
+            $this->guardarPasos($pasos, $receta_id);
+    
+            $this->conexion->commit(); // Confirma la transacción
+            return "Receta completa guardada correctamente.";
+        } catch (Exception $e) {
+            $this->conexion->rollback(); // Revierte en caso de error
+            return "Error al guardar la receta completa: " . $e->getMessage();
+        }
+    }
+    
+    
 
     //GUARDAR IMAGENES AL CARGAR LAS RECETAS
     public function guardarImagen($receta_id, $imagen) {
