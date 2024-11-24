@@ -1,45 +1,45 @@
 <?php
+require_once('recetario.php'); // Asegúrate de incluir la clase Recetario
 
-    $conexion = new mysqli("localhost", "root", "", "biblioteca_personal");
-    require_once('./biblioteca.php');
+// Crear la conexión a la base de datos
+$conexion = new mysqli("localhost", "root", "", "biblioteca_personal");
 
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        // Verificar si el user_id está presente en la URL
-        if (isset($_GET['user_id']) && is_numeric($_GET['user_id'])) {
-            // Acceder al user_id pasado por la URL (GET)
-            $user_id = (int) $_GET['user_id'];
+// Verificar si la conexión es exitosa
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
 
-            // Crear una instancia de la clase Biblioteca, pasando la conexión a la base de datos
-            $biblioteca = new Biblioteca($conexion);
+// Crear una instancia de la clase Recetario
+$recetario = new Recetario($conexion);
 
-            // Llamar al método listarLibrosGuardados
-            $libros_guardados = $biblioteca->listarLibrosGuardados($user_id);
+// Verificar si los datos fueron enviados por POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Recoger los datos del formulario
+    $nombre = $_POST['nombre'];
+    $email = $_POST['email'];
+    $contraseña = $_POST['contraseña'];
 
-            // Verificar si se encontraron libros guardados
-            if (count($libros_guardados) === 1 ) {
-                
-                $json = [];
-                
-                foreach ($libros_guardados as $libro) {
-                    // Agrega cada libro al array JSON
-                    $json[] = [
-                        'titulo' => htmlspecialchars($libro['titulo']),
-                        'autor' => htmlspecialchars($libro['autor']),
-                        'imagen_portada' => htmlspecialchars($libro['imagen_portada']),
-                        'resena_personal' => htmlspecialchars($libro['resena_personal']),
-                        'google_book_id' => htmlspecialchars($libro['google_books_id']),
-                        'descripcion_libro' => htmlspecialchars($libro['descripcion_libro']),
-
-                    ];
-                }
-                
-                echo json_encode($json);
-            } else {
-                echo '{"erro": "usuario_duplicado"}';
-            }
-        } else {
-            echo "El parámetro user_id es requerido y debe ser un número entero válido.";
-        }
+    // Validar el correo electrónico
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode(["error" => "El parámetro email es requerido y debe ser una dirección de correo válida."]);
+        exit;
     }
 
+    // Verificar si el usuario existe
+    if ($recetario->validarUsuario($email)) {
+        echo json_encode(["status" => "Usuario encontrado, iniciando sesión."]);
+    } else {
+        // Si el usuario no existe, guardarlo
+        $resultado = $recetario->guardarUsuario($nombre, $email, $contraseña);
+
+        // Responder al usuario
+        if ($resultado == "Usuario registrado exitosamente.") {
+            echo json_encode(["status" => "Usuario creado exitosamente, iniciando sesión."]);
+        } else {
+            echo json_encode(["error" => $resultado]);
+        }
+    }
+} else {
+    echo json_encode(["error" => "Método no permitido."]);
+}
 ?>

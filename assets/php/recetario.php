@@ -8,45 +8,99 @@ class Recetario {
         $this->conexion = $conexion;
     }
 
-      // GUARDAR Y REGISTRA USUARIOS EN LA BASE DE DATOS
-      public function guardarUsuario($nombre, $email, $password) {
-        // Verificar si el usuario ya existe
+      // FUNCION PARA VALIDAR SI EL USUARIO EXISTE
+    public function validarUsuario($email) {
         $query = "SELECT id FROM usuarios WHERE email = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
+      
+        // Retorna true si el usuario ya existe, de lo contrario false
+        return $stmt->num_rows > 0;
+    }
 
+    // GUARDAR Y REGISTRAR USUARIOS EN LA BASE DE DATOS
+    public function guardarUsuario($nombre, $email, $contraseña) {
+        // Verificar si el usuario ya existe utilizando la función validarUsuario
+       
         if ($stmt->num_rows > 0) {
-            return "El correo electrónico ya está registrado.";
+            echo '{ "msg": "El correo electrónico ya está registrado."}';
         }
 
         // Insertar el usuario
-        $query = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
+        $password_hash = password_hash($contraseña, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
         $stmt->bind_param("sss", $nombre, $email, $password_hash);
 
         if ($stmt->execute()) {
-            return "Usuario registrado exitosamente.";
+            echo true;
         } else {
-            return "Error al registrar el usuario: " . $this->conexion->error;
+            echo false;
+           
         }
     }
 
 
     // GUARDAR RECETAS EN LA BASE DE DATOS
-    public function guardarReceta($titulo, $ingredientes, $instrucciones, $autor_id) {
-        $query = "INSERT INTO recetas (titulo, ingredientes, instrucciones, autor_id, fecha_creacion) VALUES (?, ?, ?, ?, NOW())";
+    public function guardarReceta($titulo, $descripcion, $tipo, $usuario_id) {
+        $query = "INSERT INTO recetas (titulo, descripcion, tipo, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssi", $titulo, $ingredientes, $instrucciones, $autor_id);
-
+        $stmt->bind_param("sssi", $titulo, $descripcion, $tipo, $usuario_id);
+        
         if ($stmt->execute()) {
-            return "Receta guardada exitosamente.";
+            return "Receta guardada correctamente.";
         } else {
-            return "Error al guardar la receta: " . $this->conexion->error;
+            return "Error al guardar la receta: " . $stmt->error;
         }
     }
+    
+
+
+    public function guardarIngredientes($ingredientes, $receta_id) {
+        $query = "INSERT INTO ingredientes (nombre, cantidad, id_receta) VALUES (?, ?, ?)";
+        $stmt = $this->conexion->prepare($query);
+    
+        foreach ($ingredientes as $ingrediente) {
+            // Asegúrate de que el ingrediente tenga un nombre y cantidad válidos
+            $stmt->bind_param("ssi", $ingrediente['nombre'], $ingrediente['cantidad'], $receta_id);
+            $stmt->execute();
+        }
+    
+        return "Ingredientes guardados correctamente.";
+  
+    }
+
+    //GUARDAR IMAGENES AL CARGAR LAS RECETAS
+    public function guardarImagen($receta_id, $imagen) {
+        // Verificar si la imagen se subió sin errores
+        if ($imagen['error'] !== UPLOAD_ERR_OK) {
+            return "Error al subir la imagen.";
+        }
+    
+        // Definir el nombre y el destino de la imagen
+        $imagen_nombre = "imagen_" . time() . "." . pathinfo($imagen['name'], PATHINFO_EXTENSION);
+        $directorio_destino = "uploads/";
+    
+        // Mover la imagen al directorio destino
+        if (move_uploaded_file($imagen['tmp_name'], $directorio_destino . $imagen_nombre)) {
+            // Guardar la ruta de la imagen en la base de datos
+            $query = "INSERT INTO imagenes (id_receta, imagen_url) VALUES (?, ?)";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bind_param("is", $receta_id, $directorio_destino . $imagen_nombre);
+            if ($stmt->execute()) {
+                return "Imagen guardada correctamente.";
+            } else {
+                return "Error al guardar la imagen en la base de datos.";
+            }
+          
+        } else {
+            return "Error al mover la imagen.";
+        }
+
+    }
+    
 
     // MODIFICAR RECETAS EN LA BASE DE DATOS
 
