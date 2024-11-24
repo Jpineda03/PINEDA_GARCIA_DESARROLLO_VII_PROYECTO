@@ -36,10 +36,10 @@ const listar_recetas = async () => {
             id++;
         });
     }
-   
-    
+
     cargar_contenido_dinamico(HTML);
-    return recetas.length;
+
+    return await recetas.length;
 
 }
 
@@ -150,10 +150,8 @@ const eliminar_favoritos = (id) => {
 }
 
 const sin_recetas = (cantidad) =>{
-
-    if(cantidad > 0 ){
-
-    }else{
+    
+    if(!cantidad > 0 ){
         alert('Sin recetas disponibles para mostras Redirigiendo...');
         redirigir('/PROYECTO/');
     }
@@ -162,7 +160,7 @@ const sin_recetas = (cantidad) =>{
 
 const close_tag = () => {
     toggle_element('detalle');
-    toggle_element('login');
+    
     sin_recetas( listar_recetas());
 
 }
