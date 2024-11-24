@@ -88,7 +88,7 @@ class Recetario {
 
     // GUARDAR RECETAS EN LA BASE DE DATOS
     public function guardarReceta($titulo, $descripcion, $tipo, $usuario_id) {
-        $query = "INSERT INTO recetas (titulo, descripcion, tipo, id_usuario) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO recetas (titulo, descripcion, id_tipo, id_usuario) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("sssi", $titulo, $descripcion, $tipo, $usuario_id);
         
