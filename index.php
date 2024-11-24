@@ -317,7 +317,7 @@
           </div>
         </div>
 
-        <div class='card shadow clickeable'onclick='redirigir("http://localhost/PARCIALES/PARCIAL_4/?opcion=ver_recetas_favoritos")'>
+        <div class='card shadow clickeable'onclick='listar_recetas()'>
           <b>MOSTRAR LISTA DE FAVORITOS</b>
 
         </div>
