@@ -30,11 +30,16 @@ const listar_recetas = async () => {
 
     let HTML = "";
     let id = 0;
+    if(recetas.length > 0 ){
 
-    recetas.forEach(element => {
-        HTML += Receta(element, id);
-        id++;
-    });
+        recetas.forEach(element => {
+            HTML += Receta(element, id);
+            id++;
+        });
+    }else{
+        alert('SIN FAVORITOS PARA MOSTRAR');
+        redirigir('/PROYECTO/');
+    }
     
 
     toggle_element('login');
@@ -121,8 +126,29 @@ const agregar_nueva_receta = () => {
 const agregar_receta = () => {
     let element_1 = document.getElementById('agregar_receta_titulo');
     let element_2 = document.getElementById('agregar_receta_descripcion');
+    let element_3 = document.getElementById('agregar_receta_tipo');
 
+    request(`/PROYECTO/assets/php/guardar_recetas.php?titulo=${element_1.value}&descripcion=${element_2.value}&id_tipo=${element_3.value}`).then(
+        () => {
+            toggle_element('detalle');
+            toggle_element('login');
+            listar_recetas();
 
+        }
+    );
+
+}
+
+const eliminar_favoritos = (id) => {
+ 
+    request(`/PROYECTO/assets/php/eliminar_recetas.php?id=${id}`).then(
+        () => {
+            
+            toggle_element('detalle');
+            listar_recetas();
+
+        }
+    );
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -137,6 +163,7 @@ window.agregar_ingredientes = agregar_ingredientes;
 window.agregar_pasos = agregar_pasos;
 window.agregar_nueva_receta = agregar_nueva_receta;
 window.agregar_receta = agregar_receta;
+window.eliminar_favoritos = eliminar_favoritos;
 
 
 

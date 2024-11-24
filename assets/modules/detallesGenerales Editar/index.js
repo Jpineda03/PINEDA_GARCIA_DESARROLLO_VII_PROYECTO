@@ -68,6 +68,15 @@ return `
 
             </div>
 
+            <select id="agregar_receta_tipo" name="color" height='50px'>
+              
+              <option value="" disabled selected>-- Selecciona una opción --</option>
+              <option value="8">China</option>
+              <option value="7">Pollo</option>
+              <option value="9">Res</option>
+              
+            </select>
+
           </div>
 
         </div>

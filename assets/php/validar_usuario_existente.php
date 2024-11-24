@@ -25,7 +25,7 @@
         if ($recetario->validarUsuario($email, $contraseña)) {
             
             $usuario = $recetario->obtenerUsuario($email);
-
+            $_SESSION["id_usuario"]= $usuario['id'];
             $_SESSION["nombre"]= $usuario['nombre'];
             $_SESSION["email"]= $usuario['email'];
             
