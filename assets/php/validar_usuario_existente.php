@@ -15,7 +15,6 @@ $recetario = new Recetario($conexion);
 // Verificar si los datos fueron enviados por POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recoger los datos del formulario
-    $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $contraseña = $_POST['contraseña'];
 
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode(["status" => "Usuario encontrado, iniciando sesión."]);
     } else {
         // Si el usuario no existe, guardarlo
-        $resultado = $recetario->guardarUsuario($nombre, $email, $contraseña);
+        $resultado = $recetario->guardarUsuario($email, $contraseña);
 
         // Responder al usuario
         if ($resultado == "Usuario registrado exitosamente.") {
