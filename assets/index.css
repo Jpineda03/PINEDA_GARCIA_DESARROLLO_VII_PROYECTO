@@ -1,11 +1,11 @@
 body{
     padding: 0px;
     margin: 0px;
-    display: flex;
+ 
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    gap: 30px;
+   
     background-color: #FFCCBC;
 }
 
@@ -39,6 +39,16 @@ body{
     font-weight: bold;
     margin-bottom: 10px;
     /* border-style:none none solid none; */
+}
+.login_msg {
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: -webkit-fill-available;
+    font-weight: bold;
+
 }
 
 

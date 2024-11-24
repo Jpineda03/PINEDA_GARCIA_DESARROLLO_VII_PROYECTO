@@ -6,10 +6,11 @@
     
     $user_information['nombre'] = $_SESSION['nombre'];
     $user_information['email'] = $_SESSION['email'];
+
+ 
     
 
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +22,19 @@
 </head>
 
 <body>
+  <?php
+  if (isset($_SESSION['nombre'], $_SESSION['email'])) {
+      
+     
+
+      echo "<div class='row login_msg'>SESSION INICIADA</div>";
+      
+
+    }else {
+      echo "<div class='row login_msg'>SESSION NO INICIADA</div>";
+    }
+
+  ?>
 
   <header class="header_principal">
 

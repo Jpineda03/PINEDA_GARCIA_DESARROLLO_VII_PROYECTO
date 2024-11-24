@@ -32,9 +32,10 @@
             $conexion->close();
 
             echo json_encode(["status" => "Usuario validado, iniciando sesión."]);
-            header("Location: http://localhost/PROYECTO");
+           
 
         } 
+        header("Location: http://localhost/PROYECTO");
 
     } else {
         echo json_encode(["error" => "Método no permitido."]);
