@@ -305,21 +305,22 @@
       <div class='login_contenedor_central col'>
 
         <div class='card shadow row space_around'>
-          <div class="login_image" style=" background-color='black' ">
-          </div>
+          </div class="login_image" style=" background-color='black' ">
           <div class="login_usuario_mail col">
+          
             <div class='login_nombre_usuario'>
               <?php echo $user_information['nombre']; ?>
             </div>
+            
             <div class='login_nombre_email'>
               <?php echo $user_information['email']; ?>
             </div>
+          
           </div>
         </div>
 
         <div class='card shadow clickeable'onclick='listar_recetas()'>
           <b>MOSTRAR LISTA DE FAVORITOS</b>
-
         </div>
 
       </div>
@@ -329,6 +330,8 @@
       </button>
 
     <?php endif; ?>
+
+  </div>
 
   </div>
 
