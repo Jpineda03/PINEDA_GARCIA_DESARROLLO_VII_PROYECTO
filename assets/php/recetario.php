@@ -22,25 +22,34 @@ class Recetario {
 
     // GUARDAR Y REGISTRAR USUARIOS EN LA BASE DE DATOS
     public function guardarUsuario($nombre, $email, $contraseña) {
-        // Verificar si el usuario ya existe utilizando la función validarUsuario
-       
-        if ($stmt->num_rows > 0) {
-            echo '{ "msg": "El correo electrónico ya está registrado."}';
+        // Validar formato del correo
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return json_encode(["msg" => "Por favor, ingresa un correo electrónico válido."]);
         }
-
-        // Insertar el usuario
+    
+        // Validar formato de la contraseña (mínimo 6 caracteres, letras y números, sin caracteres especiales)
+        if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/', $contraseña)) {
+            return json_encode(["msg" => "La contraseña debe tener al menos 6 caracteres, incluyendo letras y números, y no debe incluir caracteres especiales."]);
+        }
+    
+        // Verificar si el usuario ya existe
+        if ($this->validarUsuario($email)) {
+            return json_encode(["msg" => "El correo electrónico ya está registrado."]);
+        }
+    
+        // Insertar el usuario en la base de datos
         $query = "INSERT INTO usuarios (nombre, email, contrasena) VALUES (?, ?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $password_hash = password_hash($contraseña, PASSWORD_BCRYPT);//ENCRIPTA LA CONTRASENA
+        $password_hash = password_hash($contraseña, PASSWORD_BCRYPT); // Encripta la contraseña
         $stmt->bind_param("sss", $nombre, $email, $password_hash);
-
+    
         if ($stmt->execute()) {
-            echo true;
+            return json_encode(["msg" => "Usuario registrado exitosamente."]);
         } else {
-            echo false;
-           
+            return json_encode(["msg" => "Error al registrar el usuario: " . $stmt->error]);
         }
     }
+    
 
 
     // GUARDAR RECETAS EN LA BASE DE DATOS
