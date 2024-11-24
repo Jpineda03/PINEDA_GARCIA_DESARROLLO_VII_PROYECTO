@@ -126,6 +126,7 @@ const agregar_nueva_receta = () => {
 }
 
 const agregar_receta = () => {
+    
     let element_1 = document.getElementById('agregar_receta_titulo');
     let element_2 = document.getElementById('agregar_receta_descripcion');
     let element_3 = document.getElementById('agregar_receta_tipo');
@@ -133,7 +134,6 @@ const agregar_receta = () => {
     request(`/PROYECTO/assets/php/guardar_recetas.php?titulo=${element_1.value}&descripcion=${element_2.value}&id_tipo=${element_3.value}`).then(
         () => {
             toggle_element('detalle');
-            toggle_element('login');
             sin_recetas( listar_recetas());
 
 
@@ -142,22 +142,22 @@ const agregar_receta = () => {
 
 }
 
-const eliminar_favoritos = (id) => {
+const eliminar_favoritos = async (id) => {
  
     request(`/PROYECTO/assets/php/eliminar_recetas.php?id=${id}`).then(
         () => {
             
             toggle_element('detalle');
-            sin_recetas( listar_recetas());
+            sin_recetas( listar_recetas() );
 
         }
     );
 }
 
-const sin_recetas = (cantidad) =>{
+const sin_recetas = async (cantidad) => {
+    let cant = await cantidad;
 
-    
-    if(!cantidad > 0 ){
+    if(!cant > 0 ){
         alert('Sin recetas disponibles para mostras Redirigiendo...');
         redirigir('/PROYECTO/');
     }

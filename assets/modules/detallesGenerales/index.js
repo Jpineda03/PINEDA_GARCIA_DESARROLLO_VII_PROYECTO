@@ -121,7 +121,7 @@ return `
 
       </div>
 
-      <div id='close_detalle' class="detalle_receta_close_tag" onclick='toggle_element("detalle")'>
+      <div id='close_detalle' class="detalle_receta_close_tag" onclick='close_tag()'>
         <svg class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white"
           class="bi bi-x-circle-fill" viewBox="0 0 16 16">
           <path
