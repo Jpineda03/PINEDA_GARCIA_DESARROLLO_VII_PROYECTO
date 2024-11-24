@@ -38,14 +38,9 @@ const abrir_detalles = () => {
     detalle.innerHTML = detallasGenerales();
 }
 
-
-
 window.addEventListener('DOMContentLoaded', () => {
     //listar_recetas()
 });
-
-
-
 
 window.redirigir = redirigir;
 window.abrir_detalles = abrir_detalles;
