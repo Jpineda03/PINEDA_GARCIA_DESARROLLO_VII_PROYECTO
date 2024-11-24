@@ -30,20 +30,16 @@ const listar_recetas = async () => {
     recetas = await request(API_RECETAS);
     contenido_dinamico.innerHTML = "";
 
-
     if(recetas.length > 0 ){
         recetas.forEach(element => {
             HTML += Receta(element, id);
             id++;
         });
-    }else{
-        alert('SIN FAVORITOS PARA MOSTRAR');
-        redirigir('/PROYECTO/');
     }
-    toggle_element('login');
-
    
-    contenido_dinamico.innerHTML += contenedorRecetas(HTML);
+    
+    cargar_contenido_dinamico(HTML);
+    return recetas.length;
 
 }
 
@@ -119,6 +115,7 @@ const agregar_pasos = (element_0, element_1, element_2) => {
 const agregar_nueva_receta = () => {
     contenido_dinamico.innerHTML = "";
     toggle_element('detalle');
+    toggle_element('login')
     listar_recetas();
     detalle.innerHTML = detallasGeneralesEditar("", "", 'none', "none", 'flex');
 }
@@ -132,7 +129,8 @@ const agregar_receta = () => {
         () => {
             toggle_element('detalle');
             toggle_element('login');
-            listar_recetas();
+            sin_recetas( listar_recetas());
+
 
         }
     );
@@ -145,10 +143,36 @@ const eliminar_favoritos = (id) => {
         () => {
             
             toggle_element('detalle');
-            listar_recetas();
+            sin_recetas( listar_recetas());
 
         }
     );
+}
+
+const sin_recetas = (cantidad) =>{
+
+    if(cantidad > 0 ){
+
+    }else{
+        alert('Sin recetas disponibles para mostras Redirigiendo...');
+        redirigir('/PROYECTO/');
+    }
+
+}
+
+const close_tag = () => {
+    toggle_element('detalle');
+    toggle_element('login');
+    sin_recetas( listar_recetas());
+
+}
+
+const cargar_contenido_dinamico = (HTML) => {
+    contenido_dinamico.innerHTML += contenedorRecetas(HTML);
+}
+
+const mostrat_lista_favoritos = () => {
+    sin_recetas(listar_recetas());
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -164,6 +188,8 @@ window.agregar_pasos = agregar_pasos;
 window.agregar_nueva_receta = agregar_nueva_receta;
 window.agregar_receta = agregar_receta;
 window.eliminar_favoritos = eliminar_favoritos;
+window.close_tag = close_tag;
+document.mostrat_lista_favoritos = mostrat_lista_favoritos;
 
 
 
