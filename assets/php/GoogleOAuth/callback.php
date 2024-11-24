@@ -3,6 +3,7 @@
     include "D:\laragon\www\PARCIALES\PARCIAL_4\keys.php";
 
     if (isset($_GET['code'])) {
+        
         // Datos de la aplicación de Google
         $redirect_uri = 'http://localhost/PARCIALES/PARCIAL_4/assets/php/GoogleOAuth/callback.php';
 
@@ -11,6 +12,7 @@
 
         // Configuración de la solicitud de token de acceso
         $token_url = 'https://oauth2.googleapis.com/token';
+        
         $token_data = [
             'code' => $code,
             'client_id' => $client_id,

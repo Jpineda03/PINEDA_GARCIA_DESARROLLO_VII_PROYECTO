@@ -1,6 +1,6 @@
-export  const request = async (url) => {
-
-    let API = fetch(url).then(response => {
+export  const request = async (url, obj ) => {
+    
+    let API = fetch(url,obj).then(response => {
         if (!response.ok) {
         throw new Error('Error en la solicitud');
         }

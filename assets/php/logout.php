@@ -6,7 +6,7 @@
     $_SESSION = array();
     // Destruir la sesión
     
-    header("Location: http://localhost/PARCIALES/PARCIAL_4");
+    header("Location: http://localhost/PROYECTO");
     exit();
 
 ?>
