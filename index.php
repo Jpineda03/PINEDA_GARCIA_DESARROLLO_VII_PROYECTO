@@ -1,12 +1,12 @@
-<?php 
+<?php
 
   session_start();
- 
-  if(isset($_SESSION['nombre'], $_SESSION['email'])){
-    // print_r($_SESSION);
+
+  if (isset($_SESSION['nombre'], $_SESSION['email'])) {
+    
     $user_information['nombre'] = $_SESSION['nombre'];
     $user_information['email'] = $_SESSION['email'];
-    // echo 'Sesion iniciada';
+    
 
   }
 
@@ -17,15 +17,15 @@
 <head>
   <title> Curso general de PHP</title>
   <link rel="stylesheet" href="./assets/index.css">
-  
+
 </head>
 
 <body>
-  
+
   <header class="header_principal">
 
     <div class='header-contenedor-izq'>
-      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      <svg onclick="redirigir('/PROYECTO')" class="clickeable" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" height"50" width='50' viewBox="0 0 212.926 212.926"
         style="enable-background:new 0 0 212.926 212.926;" xml:space="preserve">
         <g>
@@ -58,11 +58,10 @@
     </div>
 
     <div class="contenedor-derecho">
-      
+
       <div class='main_container'>
 
-        <div onclick='abrir_detalles()' class='receta'
-          style='background-image: url("assets/images/image-animal.jpg");'>
+        <div onclick='abrir_detalles()' class='receta' style='background-image: url("assets/images/image-animal.jpg");'>
           <div class='receta-contenido'>
             <svg viewBox="0 0 24 24" fill="none" height="50%" width="50%" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -121,7 +120,8 @@
 
       <div class='main_container_v1'>
 
-        <div class='receta-v1' style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div class='receta-v1'
+          style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
 
 
           <div class='receta-contenido-v1' style='background-color:red;'>
@@ -153,7 +153,8 @@
 
         </div>
 
-        <div class='receta-v1'style='background-image:url("assets/images/receta-2.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div class='receta-v1'
+          style='background-image:url("assets/images/receta-2.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1'>
             <svg height="50%" width="50%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
@@ -178,7 +179,8 @@
           </div>
         </div>
 
-        <div class='receta-v1' style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div class='receta-v1'
+          style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1'>
             <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="white" class="bi bi-clock-fill"
               viewBox="0 0 16 16">
@@ -221,127 +223,120 @@
   </div>
 
 
-  
-    
-  <?php if(isset($_GET['opcion'])): ?> <?php if($_GET['opcion'] == 'registrar'): ?>
-      <div id="login" class="barra_formulario_login col open">
-  <?php endif;?><?php else: ?>
-      <div id="login" class="barra_formulario_login col close">
-  <?php endif;?>
 
-    <div class="login_opciones_close row">
 
-        <svg onclick='toggle_element("login")' class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25"
-          height="25" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
-          <path
-            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708" />
-        </svg>
+      <?php if (isset($_GET['opcion'])): ?><?php if ($_GET['opcion'] == 'registrar'): ?> <div id="login" class="barra_formulario_login col open"><?php endif; ?>
+        <?php else: ?> <div id="login" class="barra_formulario_login col close"> <?php endif; ?>
 
-    </div>
+        <div class="login_opciones_close row">
 
-    <div class="login_contenedor_inferior col">
-
-      <?php if (!isset($_SESSION['nombre'], $_SESSION['email'])): ?>
-        
-        <div class="col formulario_login_card"'>
-      
-      <?php else: ?>
-
-        <div id="formulario_login_card" class="col formulario_login_card" style=' display:none;'>
-      
-      <?php endif; ?>
-
-      <label class="font_tittles"> Login de usuarios</label>
-
-      <?php if(isset($_GET['opcion'])): ?> <?php if($_GET['opcion'] == 'registrar'): ?>
-
-        <form id='formulario_login' class="col formulario_login_main" method="post" action="./assets/php/guardar_usuario.php">
-
-          <div class="col">
-          <label class="font_form_tittles">Nombre: </label>
-          <input type="text" name="nombre" style="height: 30px;">
-          </div>
-
-          <div class="col">
-          <label class="font_form_tittles">Correo:</label>
-          <input type="text" name="email" style="height: 30px;">
-          </div>
-
-          <div class="col">
-          <label class="font_form_tittles">Contraseña: </label>
-          <input type="password" name="contraseña" style="height: 30px;">
-          </div>
-
-          <button id="btn_login_formulario" class="login_button">Registrar usuario</button>
-
-        </form>
-
-      <?php endif;?><?php else: ?>
-
-        <form id='formulario_login' class="col formulario_login_main" method="post" action="./assets/php/login.php">
-    
-          <div class="col">
-          <label class="font_form_tittles">Correo:</label>
-          <input type="text" name="email" style="height: 30px;">
-          </div>
-  
-          <div class="col">
-          <label class="font_form_tittles">Contraseña: </label>
-          <input type="password" name="contraseña" style="height: 30px;">
-          </div>
-  
-          <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
-  
-          <div> Eres nuevo? <a href="?opcion=registrar"> Create un usuario</a> </div>
-  
-        </form>
-
-      <?php endif;?>
-
-    </div>
-      
-    <?php if (isset($_SESSION['nombre'], $_SESSION['email'])): ?>
-
-      <div class='login_contenedor_central col'>
-
-        <div class='card shadow row space_around'>
-          
-          <svg xmlns="http://www.w3.org/2000/svg" style='margin-right:50px;' onclick='toggle_element("login")' width="60" height="60" fill="currentColor" class="clickeable bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+          <svg onclick='toggle_element("login")' class="clickeable" xmlns="http://www.w3.org/2000/svg" width="25"
+            height="25" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708" />
           </svg>
 
+        </div>
 
-          <div class="login_usuario_mail col">
-          
-            <div class='login_nombre_usuario col'>
-              <?php echo $user_information['nombre']; ?>
-            </div>
-            
-            <div class='login_nombre_email col'>
-              <?php echo $user_information['email']; ?>
-            </div>
-          
+        <div class="login_contenedor_inferior col">
+
+          <?php if (!isset($_SESSION['nombre'], $_SESSION['email'])): ?> <div class="col formulario_login_card"> 
+            <?php else: ?><div id="formulario_login_card" class="col formulario_login_card" style=' display:none;'><?php endif; ?>
+
+            <label class="font_tittles"> Login de usuarios</label>
+
+            <?php if (isset($_GET['opcion'])): ?><?php if ($_GET['opcion'] == 'registrar'): ?>
+                <form id='formulario_login' class="col formulario_login_main" method="post"
+                  action="./assets/php/guardar_usuario.php">
+
+                  <div class="col">
+                    <label class="font_form_tittles">Nombre: </label>
+                    <input type="text" name="nombre" style="height: 30px;">
+                  </div>
+
+                  <div class="col">
+                    <label class="font_form_tittles">Correo:</label>
+                    <input type="text" name="email" style="height: 30px;">
+                  </div>
+
+                  <div class="col">
+                    <label class="font_form_tittles">Contraseña: </label>
+                    <input type="password" name="contraseña" style="height: 30px;">
+                  </div>
+
+                  <button id="btn_login_formulario" class="login_button">Registrar usuario</button>
+
+                </form>
+            <?php endif; ?>
+            <?php else: ?>
+
+              <form id='formulario_login' class="col formulario_login_main" method="post" action="./assets/php/validar_usuario_existente.php">
+
+                <div class="col">
+                  <label class="font_form_tittles">Correo:</label>
+                  <input type="text" name="email" style="height: 30px;" required>
+                </div>
+
+                <div class="col">
+                  <label class="font_form_tittles">Contraseña: </label>
+                  <input type="password" name="contraseña" style="height: 30px;" required>
+                </div>
+
+                <button id="btn_login_formulario" class="login_button">Iniciar Sesion</button>
+
+                <div> Eres nuevo? <a href="?opcion=registrar"> Create un usuario</a> </div>
+
+              </form>
+
+            <?php endif; ?>
+
           </div>
-        </div>
 
-        <div class='card shadow clickeable'onclick='listar_recetas()'>
-          <b>MOSTRAR LISTA DE FAVORITOS</b>
-        </div>
+          <?php if (isset($_SESSION['nombre'], $_SESSION['email'])): ?>
 
+            <div class='login_contenedor_central col'>
+
+              <div class='card shadow row space_around'>
+
+                <svg xmlns="http://www.w3.org/2000/svg" style='margin-right:50px;' onclick='toggle_element("login")'
+                  width="60" height="60" fill="currentColor" class="clickeable bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>
+
+                <div class="login_usuario_mail col">
+
+                  <div class='login_nombre_usuario col'>
+                    <?php echo $user_information['nombre']; ?>
+                  </div>
+
+                  <div class='login_nombre_email col'>
+                    <?php echo $user_information['email']; ?>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class='card shadow clickeable' onclick='listar_recetas()'>
+                <b>MOSTRAR LISTA DE FAVORITOS</b>
+              </div>
+
+            </div>
+
+            <button id="logout" class='login_button login_button_logout clickeable'
+              onclick="redirigir('http://localhost/PROYECTO/assets/php/logout.php')">
+              CERRAR SESSION
+            </button>
+
+          <?php endif; ?>
+
+        </div>
       </div>
 
-      <button id="logout" class='login_button login_button_logout clickeable' onclick="redirigir('http://localhost/PROYECTO/assets/php/logout.php')"> 
-        CERRAR SESSION 
-      </button>
-
-    <?php endif; ?>
-
   
-
-  </div>
-
-  <div id="detalle" class="close detalle row"></div>
+      <div id="detalle" class="close detalle row"></div>
 
 </body>
 

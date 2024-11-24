@@ -5,10 +5,12 @@ require_once('Recetario.php');  // Asegúrate de que este archivo existe y está
 // Implementar la conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "recetas");
 
+
 // Verificar si la conexión fue exitosa
 if ($conexion->connect_error) {
     die(json_encode(["error" => "Conexión fallida a la base de datos: " . $conexion->connect_error]));
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verificar si se pasaron los parámetros 'nombre', 'email' y 'contraseña'
@@ -24,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Llamar al método para guardar el usuario
         $mensaje = $Recetario->guardarUsuario($nombre, $email, $contraseña);
 
-        // Verificar el resultado
+
         if (json_decode($mensaje)->msg === "Usuario registrado exitosamente.") {
             $_SESSION["nombre"] = $nombre;
             $_SESSION["email"] = $email;
