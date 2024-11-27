@@ -213,6 +213,77 @@ const editar_receta = () => {
    
 }
 
+const subir_imagen = () => {
+    
+    let  inputImagen = document.getElementById("input_imagen");
+    let  btnSubirImagen = document.getElementById("btn_subir_imagen");
+    let  preview = document.getElementById("preview_imagen");
+    
+  
+    // Previsualización de la imagen seleccionada
+    inputImagen.addEventListener("change", function () {
+
+        const archivo = this.files[0];
+
+        if (archivo) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+            // preview.innerHTML = `<img src='/PROYECTO/assets/php/uploads/${archivo.name}' style="max-width: 100%; max-height: 200px;" alt="Previsualización" />`;
+            };
+            
+            reader.readAsDataURL(archivo);
+
+        } else {
+            preview.innerHTML = "";
+        }
+
+        inputImagen.removeEventListener("click");
+    });
+  
+    // Enviar la imagen al servidor
+    btnSubirImagen.addEventListener("click", function () {
+      
+        const archivo = inputImagen.files[0];
+      
+        if (!archivo) {
+            alert("Por favor, selecciona una imagen primero.");
+            return;
+        }
+  
+        const formData = new FormData();
+        formData.append("imagen", archivo);
+
+        console.log(archivo);
+
+        fetch("assets/php/upload.php", {
+            method: "POST",
+            body: formData,
+        }).then((response) => response.json()).then((data) => {
+        
+        if (data.success) {
+            alert("¡Imagen subida exitosamente!");
+            preview.innerHTML += `<img class="detalle_contenedor_imagenes_img" src='/PROYECTO/assets/php/uploads/${archivo.name}'  alt="Previsualización" />`;
+
+        } else {
+
+        alert("Hubo un error al subir la imagen: " + data.error);
+        }
+        })
+        .catch((error) => {
+        console.error("Error al subir la imagen:", error);
+        alert("Ocurrió un error inesperado.");
+        });
+
+        btnSubirImagen.removeEventListener("click");
+
+    });
+
+    
+
+
+
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     //listar_recetas()
 });
@@ -230,6 +301,7 @@ window.close_tag = close_tag;
 window.mostrat_lista_favoritos = mostrat_lista_favoritos;
 window.detallasGeneralesEditar = detallasGeneralesEditar;
 window.editar_receta = editar_receta;
+window.subir_imagen = subir_imagen
 
 
 
