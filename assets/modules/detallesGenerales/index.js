@@ -7,22 +7,41 @@ export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agrega
 
   let mis_ingredientes = [];
   let HTML_INGREDIENTES = "";
+  let HTML_PASOS = "";
   let pasos = [];
   let x = 0;
 
   // console.log(DETALLE_OBJ.pasos);
 
-  if(mis_ingredientes != []){
-    
-    mis_ingredientes = JSON.parse( DETALLE_OBJ.ingredientes);
-    
-    mis_ingredientes.forEach(element => {
-    
-        HTML_INGREDIENTES += `<tr> <td>${x}</td> <td>${element.ingrediente}</td> <td>${element.cantidad}</td> <td>${element.unidades}</td> </tr>`;
-        // console.log(element)
-        x++;
-    });
-  }
+
+    if (DETALLE_OBJ.ingredientes) {
+      
+      mis_ingredientes = JSON.parse( DETALLE_OBJ.ingredientes);
+      
+      mis_ingredientes.forEach(element => {
+      
+          HTML_INGREDIENTES += `<tr> <td>${x}</td> <td>${element.ingrediente}</td> <td>${element.cantidad}</td> <td>${element.unidades}</td> </tr>`;
+          // console.log(element)
+          x++;
+      });
+
+    }
+
+    x = 0;
+
+    if (DETALLE_OBJ.pasos) {
+      
+      pasos = JSON.parse( DETALLE_OBJ.pasos);
+      
+      pasos.forEach(element => {
+      
+        HTML_PASOS += `<tr> <td>${x}</td> <td>${element}</td> </tr>`;
+          // console.log(element)
+          x++;
+      });
+
+    }
+
     
 
 
@@ -65,7 +84,9 @@ return `
                   </tr>
               </thead>
               <tbody>
-                  <tr> <td>1</td> <td>Ana</td> </tr>
+
+                  ${HTML_PASOS}
+                  
               </tbody>
             </table>
           </div>
