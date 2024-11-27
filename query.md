@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS recetas;
 USE recetas;
 
--- Crear tabla usuarios
+-- Crear tabla usuarios (solo con AUTO_INCREMENT en 'id')
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
@@ -9,17 +9,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `contrasena` VARCHAR(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Crear tabla tipos sin auto incremento
+-- Crear tabla tipos (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `tipos` (
   `id` INT NOT NULL,
   `nombre` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
--- Crear tabla recetas
+-- Crear tabla recetas (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `recetas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(255) NOT NULL,
@@ -35,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `recetas` (
   CONSTRAINT `recetas_ibfk_2` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Crear tabla comentarios
+-- Crear tabla comentarios (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `comentarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_receta` INT NOT NULL,
@@ -49,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Crear tabla imagenes
+-- Crear tabla imagenes (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `imagenes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
@@ -60,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `imagenes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Crear tabla ingredientes
+-- Crear tabla ingredientes (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `ingredientes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_receta` INT NOT NULL,
@@ -74,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   CONSTRAINT `ingredientes_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Crear tabla pasos
+-- Crear tabla pasos (sin AUTO_INCREMENT)
 CREATE TABLE IF NOT EXISTS `pasos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_receta` INT NOT NULL,
@@ -88,8 +87,18 @@ CREATE TABLE IF NOT EXISTS `pasos` (
   CONSTRAINT `pasos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+ALTER TABLE `recetas`
+ADD COLUMN `tiempo_coccion` INT DEFAULT NULL AFTER `id_tipo`;
+
 -- Insertar tipos de receta
 INSERT INTO `tipos` (`id`, `nombre`) VALUES 
-(0, 'chino'),
+(3, 'chino'),
 (1, 'pollo'),
 (2, 'res');
+
+--USUARIOS PARA INGRESAR
+
+INSERT INTO `usuarios` (`nombre`, `email`, `contrasena`) VALUES
+('Carlos Mendoza', 'carlos.mendoza@example.com', 'contrasena123'),
+('Ana González', 'ana.gonzalez@example.com', 'password456'),
+('Luis Pérez', 'luis.perez@example.com', 'miClave789');
