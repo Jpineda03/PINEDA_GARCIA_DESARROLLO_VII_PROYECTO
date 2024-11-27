@@ -3,7 +3,32 @@ var DETALLE_OBJ = {
 }
 
 export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agregar) => {
-console.log(DETALLE_OBJ);
+  // console.log(DETALLE_OBJ);
+
+  let mis_ingredientes = [];
+  let HTML_INGREDIENTES = "";
+  let pasos = [];
+  let x = 0;
+
+  console.log(DETALLE_OBJ.pasos);
+
+  if(mis_ingredientes != []){
+    
+    mis_ingredientes = JSON.parse( DETALLE_OBJ.ingredientes);
+    
+    mis_ingredientes.forEach(element => {
+    
+        HTML_INGREDIENTES += `<tr> <td>${x}</td> <td>${element.ingrediente}</td> <td>${element.cantidad}</td> <td>${element.unidades}</td> </tr>`;
+        console.log(element)
+        x++;
+    });
+  }
+    
+
+
+  
+
+
 
 return `
   <div class="detalle_receta_contenedor row" style="background-size: 100% 100%;">
@@ -30,10 +55,22 @@ return `
           <div class="detalle_titulo_comentario"> Pasos: </div>
 
           <div id="pasos_receta_${id}" class="pasos_receta">
-            1. Aqui ira tu primera paso de receta. <br>
+            <table>
+              <thead>
+                  <tr>
+                    <th># </th>
+                    <th>Descripcion </th>
+                      
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr> <td>1</td> <td>Ana</td> </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="row contenedor_agregar">
+          <!-- <div class="row contenedor_agregar">
             <input class="text_area_pasos" id="text_area_pasos_${id}"></input>
             
             <svg style='display:{not_print_agregar}' id='agregar_favorito_{my_book_id}'
@@ -45,7 +82,7 @@ return `
                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
             </svg>
 
-          </div>
+          </div> -->
 
         </div>
 
@@ -54,10 +91,17 @@ return `
           <div class="detalle_titulo_comentario"> Ingredientes: </div>
 
           <div id="ingredientes_receta_${id}" class="row pasos_receta">
-            1. Aqui ira tu primer ingrediente de receta.
+            <table>
+              <thead>
+                  <tr> <th>#</th> <th>Ingrediente</th> <th>Cantidad</th> <th>Unidades </th></tr>
+              </thead>
+              <tbody>
+                  ${HTML_INGREDIENTES}
+              </tbody>
+            </table>
           </div>
 
-          <div class="row contenedor_agregar">
+          <!-- <div class="row contenedor_agregar">
 
             <input class="text_area_ingredientes" id="text_area_ingredientes_${id}"></input>
             <input class="text_area_ingredientes" id="text_area_cantidades_${id}"></input>
@@ -74,7 +118,7 @@ return `
               
             </svg>
 
-          </div>
+          </div> -->
 
         </div>
 

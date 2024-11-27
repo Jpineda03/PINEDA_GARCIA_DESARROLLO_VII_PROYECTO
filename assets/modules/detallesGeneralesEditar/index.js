@@ -1,6 +1,5 @@
 export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, agregar) => {
 
-
 return `
 <div class="detalle_receta_contenedor row" style="background-size: 100% 100%;">
   
@@ -21,8 +20,12 @@ return `
             
             <div class="detalle_titulo_comentario"> Pasos: </div>
 
-            <div id="pasos_receta_{id}" class="pasos_receta">
-              1. Aqui ira tu primera paso de receta. <br>
+            <div  class="pasos_receta">
+              <table> <thead>
+                  <tr> <th>#</th> <th>Paso</th></tr>
+              </thead>
+                <tbody id="pasos_receta_{id}">  </tbody>
+              </table>
             </div>
 
             <div class="row contenedor_agregar">
@@ -45,8 +48,12 @@ return `
 
             <div class="detalle_titulo_comentario"> Ingredientes: </div>
 
-            <div id="ingredientes_receta_{id}" class="row pasos_receta">
-              1. Aqui ira tu primer ingrediente de receta.
+            <div class="row pasos_receta">
+              <table> <thead>
+                <tr> <th>#</th> <th>Ingrediente</th> <th>Cantidad</th> <th>Unidades </th></tr>
+              </thead>
+                <tbody id="ingredientes_receta_{id}">  </tbody>
+              </table>
             </div>
 
             <div class="row contenedor_agregar">
