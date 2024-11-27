@@ -1,9 +1,76 @@
 export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, agregar) => {
   let my_HTML = '';
+  let ingredientes = [];
+  let pasos = [];
+  let HTML_INGREDIENTES = "";
+  let HTML_PASOS = "";
   
   if(DETALLE_OBJ) {
+
+    ingredientes = JSON.parse(DETALLE_OBJ.ingredientes);
+    pasos = JSON.parse(DETALLE_OBJ.pasos);
+    
+
+    let id = 0; 
+    ingredientes.forEach(element => {
+      console.log(element);
+      
+      HTML_INGREDIENTES += `
+        <div class='row contenedor_agregar'>
+          
+          <input class="text_area_ingredientes" id="text_area_ingredientes_${id}" value='${element.ingrediente}'></input>
+          <input class="text_area_ingredientes" id="text_area_cantidades_${id}" value='${element.cantidad}'></input>
+          <input class="text_area_ingredientes" id="text_area_unidades_${id}" value='${element.unidades}'></input>
+
+          <svg 
+          
+            style='display:{not_print_agregar}' id='agregar_favorito_{my_book_id}'
+            onclick="agregar_ingredientes('text_area_ingredientes_${id}', 'ingredientes_receta_{id}', 'text_area_cantidades_${id}', 'text_area_unidades_${id}')"
+            class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+            class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            
+          </svg>
+
+        </div>
+
+      `
+
+      id++;
+      
+    });
+    
+    
+    id = 0; 
+    pasos.forEach(element => {
+      HTML_PASOS += `
+
+        <div class='row contenedor_agregar'>
+          <input class="text_area_pasos" id="text_area_pasos_${id}" value=${element}></input>
+
+          <svg style='display:{not_print_agregar}' id='agregar_favorito_{my_book_id}'
+            onclick="agregar_pasos('text_area_pasos_${id}', 'pasos_receta_{id}')"
+            class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+            class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+            <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+          </svg>
+        </div>   
+      `
+
+      id++;
+
+    })
+
+
+
+
+
     
     my_HTML = `
+    
       <div class="detalle_receta_contenedor row" style="background-size: 100% 100%;">  
         
         <div class='detalle_contenedor_imagenes col'>
@@ -16,8 +83,8 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
           
           <div class="detalle_receta_detalles_informacion col margen_top">
         
-            <input id="agregar_receta_titulo" class="detalle_receta_detalles_informacion_titulo row" placeholder='titulo'>
-            <input id='agregar_receta_descripcion' class="detalle_receta_detalles_informacion_descripcion" placeholder='descripcion'>
+            <input id="agregar_receta_titulo" class="detalle_receta_detalles_informacion_titulo row" value='${DETALLE_OBJ.titulo}'>
+            <textarea id='agregar_receta_descripcion' height="500" class="detalle_receta_detalles_informacion_descripcion">${DETALLE_OBJ.descripcion} </textarea>
               
             <div class="detalle_receta_detalles_informacion_agregar pasos col">
               
@@ -31,17 +98,10 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
                 </table>
               </div>
 
-              <div class="row contenedor_agregar">
-                <input class="text_area_pasos" id="text_area_pasos_{id}"></input>
+              <div class="row contenedor_agregar col">
+
+                ${HTML_PASOS}
                 
-                <svg style='display:{not_print_agregar}' id='agregar_favorito_{my_book_id}'
-                  onclick="agregar_pasos('text_area_pasos_{id}', 'pasos_receta_{id}')"
-                  class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
-                  class="bi bi-plus-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                  <path
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                </svg>
 
               </div>
 
@@ -59,31 +119,18 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
                 </table>
               </div>
 
-              <div class="row contenedor_agregar">
+              <div class="col contenedor_agregar">
 
-                <input class="text_area_ingredientes" id="text_area_ingredientes_{id}"></input>
-                <input class="text_area_ingredientes" id="text_area_cantidades_{id}"></input>
-                <input class="text_area_ingredientes" id="text_area_unidades_{id}"></input>
-
-                <svg 
-                
-                  style='display:{not_print_agregar}' id='agregar_favorito_{my_book_id}'
-                  onclick="agregar_ingredientes('text_area_ingredientes_{id}', 'ingredientes_receta_{id}', 'text_area_cantidades_{id}', 'text_area_unidades_{id}')"
-                  class="clickeable" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
-                  class="bi bi-plus-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                  
-                </svg>
+                ${HTML_INGREDIENTES}
 
               </div>
 
-              <select id="agregar_receta_tipo" name="color" height='50px'>
+              <select id="agregar_receta_tipo" name="color" height='50px' value="${DETALLE_OBJ.tipo}">
                 
-                <option value="" disabled selected>-- Selecciona una opción --</option>
-                <option value="3">China</option>
+                <option value="" disabled>-- Selecciona una opción --</option>
                 <option value="1">Pollo</option>
                 <option value="2">Res</option>
+                <option value="3">China</option>
                 
               </select>
 
@@ -121,7 +168,7 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
                   d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
               </svg>
 
-              <label style="font-weight: bold; display:${agregar};"> Agregar Receta</label>
+              <label style="font-weight: bold; display:${agregar};"> Actualizar Receta</label>
 
             </div>
 

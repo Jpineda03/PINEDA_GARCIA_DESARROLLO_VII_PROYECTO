@@ -207,9 +207,9 @@ const editar_receta = () => {
     setTimeout( ()=>{
         toggle_element('detalle');
 
-    }, 1000);
+    }, 500);
 
-    detalle.innerHTML = detallasGeneralesEditar(AOBJ, id, 'none', "flex", 'none', "flex");
+    detalle.innerHTML = detallasGeneralesEditar(AOBJ, "", 'none', "none", 'flex');
    
 }
 

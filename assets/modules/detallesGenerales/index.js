@@ -10,7 +10,7 @@ export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agrega
   let pasos = [];
   let x = 0;
 
-  console.log(DETALLE_OBJ.pasos);
+  // console.log(DETALLE_OBJ.pasos);
 
   if(mis_ingredientes != []){
     
@@ -19,7 +19,7 @@ export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agrega
     mis_ingredientes.forEach(element => {
     
         HTML_INGREDIENTES += `<tr> <td>${x}</td> <td>${element.ingrediente}</td> <td>${element.cantidad}</td> <td>${element.unidades}</td> </tr>`;
-        console.log(element)
+        // console.log(element)
         x++;
     });
   }
