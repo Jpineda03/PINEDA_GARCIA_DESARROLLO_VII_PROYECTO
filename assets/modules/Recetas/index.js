@@ -1,7 +1,6 @@
 export const Receta = (OBJECT_RECETA, id) => {
-
     OBJECT_RECETA.descripcion = OBJECT_RECETA.descripcion.replaceAll(/[^a-zA-Z0-9 ]/g, " ");
-    console.log(OBJECT_RECETA.descripcion);
+    
 
     return `
         <div id="receta_${id}" class="componente_receta row shadow clickeable" onclick='abrir_detalles(${JSON.stringify(OBJECT_RECETA)}, ${id})'>

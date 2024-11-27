@@ -30,15 +30,18 @@ const listar_recetas = async (id_tipo = "") => {
 
     //  // Crear la URL con el filtro de tipo si se ha pasado
     let url = API_RECETAS;
+   
     if (id_tipo !== "") {
-    url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
+        url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
     }
      
     recetas = await request(url);
     contenido_dinamico.innerHTML = "";
 
     if( !recetas.error ){
+
         recetas.forEach(element => {
+            
             HTML += Receta(element, id);
             id++;
         });
@@ -77,11 +80,9 @@ const agregar_ingredientes = (element_0, element_1, element_2, element_3) => {
         my_container.innerHTML = "";
 
         array_ingredientes.forEach(element => {
-            
-            my_container.innerHTML += "<div><div class='contenedor_detallesGenerales_ingredientes'>" + element.ingrediente + "</div>"; 
-            my_container.innerHTML += "<div class='contenedor_detallesGenerales_ingredientes'>" + element.cantidad + "</div>"; 
-            my_container.innerHTML += "<div class='contenedor_detallesGenerales_ingredientes'>" + element.unidades + "</div> </div><br>"; 
-            
+
+            my_container.innerHTML += `<tr> <td>${x}</td> <td>${element.ingrediente}</td> <td>${element.cantidad}</td> <td>${element.unidades}</td> </tr>`
+                
             x++;
         });
 
@@ -93,11 +94,9 @@ const agregar_ingredientes = (element_0, element_1, element_2, element_3) => {
 
 }
 
-const agregar_pasos = (element_0, element_1, element_2) => {
+const agregar_pasos = (element_0, element_1) => {
 
     let my_value_1 = document.getElementById(element_0);
-   
-
     let my_container = document.getElementById(element_1);
     
     
@@ -110,7 +109,7 @@ const agregar_pasos = (element_0, element_1, element_2) => {
 
         array_pasos.forEach(element => {
             
-            my_container.innerHTML += "<div class='contenedor_detallesGenerales_ingredientes'>" + x + ". "+ element + "</div><br>";
+            my_container.innerHTML += `<tr> <td>${x}</td> <td>${element}</td> </tr>`;
 
             x++;
         });
@@ -138,7 +137,7 @@ const agregar_receta = () => {
 
     
 
-    let arreglo_pasos = array_pasos.join(',');
+    let arreglo_pasos = JSON.stringify(array_pasos);
     let arreglo_ingredientes = JSON.stringify(array_ingredientes);
 
 

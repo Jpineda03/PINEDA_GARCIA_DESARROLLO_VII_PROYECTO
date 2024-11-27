@@ -62,16 +62,17 @@ class Recetario {
     public function obtenerRecetas($tipo = null) {
         // Si se proporciona un tipo de receta, filtrar por ese tipo, de lo contrario, listar todas las recetas
         if ($tipo) {
-            $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
-                      FROM recetas r
-                      JOIN usuarios u ON r.id_usuario = u.id
-                      WHERE r.id_tipo = ?";
+            $query = "SELECT r.id, r.titulo as titulo, r.descripcion as descripcion, r.fecha_creacion, u.nombre as autor, p.descripcion as pasos, i.ingrediente as ingredientes
+                        FROM recetas r, usuarios u, pasos p, ingredientes i
+                        WHERE r.id_tipo = ? AND r.id_usuario = u.id AND r.id = p.id_receta AND r.id = i.id_receta";
+
             $stmt = $this->conexion->prepare($query);
             $stmt->bind_param("s", $tipo);
+
         } else {
-            $query = "SELECT r.id, r.titulo, r.descripcion, r.fecha_creacion, u.nombre AS autor 
-                      FROM recetas r
-                      JOIN usuarios u ON r.id_usuario = u.id";
+            $query = "  SELECT r.id, r.titulo as titulo, r.descripcion as descripcion, r.fecha_creacion, u.nombre as autor, p.descripcion as pasos, i.ingrediente as ingredientes
+                        FROM recetas r, usuarios u, pasos p, ingredientes i
+                        WHERE r.id_usuario = u.id AND r.id = p.id_receta AND r.id = i.id_receta";
             $stmt = $this->conexion->prepare($query);
         }
     

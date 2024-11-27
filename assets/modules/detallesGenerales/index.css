@@ -19,7 +19,7 @@
     
     
     color: #616161;
-    gap: 50px;
+    gap: 100px;
 }
 
 .detalle_receta_detalles{
@@ -37,7 +37,7 @@
 }
 
 .detalle_receta_detalles_informacion{
-    gap:40px;
+    gap:100px;
     /* border-style: solid; */
     height: -webkit-fill-available;
     overflow-y: scroll;
@@ -232,3 +232,33 @@
 
 
 
+
+
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+caption {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
