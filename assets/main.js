@@ -21,6 +21,9 @@ const libro_buscado = "php";
 
 var array_pasos = [];
 var array_ingredientes = [];
+var AOBJ = {};
+var filtro_tipo = 0;
+
 
 const listar_recetas = async (id_tipo = "") => {
 
@@ -28,14 +31,22 @@ const listar_recetas = async (id_tipo = "") => {
     let HTML = "";
     let id = 0;
 
-    //  // Crear la URL con el filtro de tipo si se ha pasado
+    
     let url = API_RECETAS;
    
     if (id_tipo !== "") {
-        url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
+
+        filtro_tipo = id_tipo;
+        url += `?tipo=${id_tipo}`;  
+
+    }else{
+
+        url += `?tipo=${filtro_tipo}`;  
+
     }
      
     recetas = await request(url);
+    
     contenido_dinamico.innerHTML = "";
 
     if( !recetas.error ){
@@ -48,19 +59,18 @@ const listar_recetas = async (id_tipo = "") => {
 
         cargar_contenido_dinamico(HTML);
         return await recetas.length;
+
     }else{
         return 0;
     }
 
-
-
 }
 
 const abrir_detalles = (OBJECT, id) => {
-    // console.log(OBJECT);
     detalle.innerHTML = "";
     toggle_element('detalle');
-    detalle.innerHTML = detallasGenerales(OBJECT, id, 'none', "flex", 'none');
+    detalle.innerHTML = detallasGenerales(OBJECT, id, 'none', "flex", 'none', "flex");
+    AOBJ = OBJECT;
 }
 
 const agregar_ingredientes = (element_0, element_1, element_2, element_3) => {
@@ -190,6 +200,19 @@ const mostrat_lista_favoritos = async () => {
     sin_recetas(await listar_recetas());
 }
 
+const editar_receta = () => {
+    detalle.innerHTML = "";
+    toggle_element('detalle');
+    
+    setTimeout( ()=>{
+        toggle_element('detalle');
+
+    }, 1000);
+
+    detalle.innerHTML = detallasGeneralesEditar(AOBJ, id, 'none', "flex", 'none', "flex");
+   
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     //listar_recetas()
 });
@@ -204,7 +227,10 @@ window.agregar_nueva_receta = agregar_nueva_receta;
 window.agregar_receta = agregar_receta;
 window.eliminar_favoritos = eliminar_favoritos;
 window.close_tag = close_tag;
-document.mostrat_lista_favoritos = mostrat_lista_favoritos;
+window.mostrat_lista_favoritos = mostrat_lista_favoritos;
+window.detallasGeneralesEditar = detallasGeneralesEditar;
+window.editar_receta = editar_receta;
+
 
 
 
