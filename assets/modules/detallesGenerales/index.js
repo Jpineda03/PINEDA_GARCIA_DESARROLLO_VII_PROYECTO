@@ -23,6 +23,8 @@ export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agrega
         x++;
     });
 
+  }else {
+    
   }
 
   x = 0;
@@ -37,6 +39,8 @@ export const detallasGenerales = (DETALLE_OBJ, id, comentarios, eliminar, agrega
         // console.log(element)
         x++;
     });
+
+  }else {
 
   }
     
