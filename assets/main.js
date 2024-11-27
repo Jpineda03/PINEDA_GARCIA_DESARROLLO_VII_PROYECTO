@@ -21,17 +21,23 @@ const libro_buscado = "php";
 
 var array_pasos = [];
 var array_ingredientes = [];
+var filtro_tipo = 0;
 
 const listar_recetas = async (id_tipo = "") => {
 
     let recetas = [];
     let HTML = "";
     let id = 0;
-
+    
+    
     //  // Crear la URL con el filtro de tipo si se ha pasado
     let url = API_RECETAS;
     if (id_tipo !== "") {
-    url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
+
+        filtro_tipo = id_tipo;
+        url += `?tipo=${id_tipo}`;  // Agregar el parámetro 'tipo' a la URL
+    }else{
+        url += `?tipo=${filtro_tipo}`;  // Agregar el parámetro 'tipo' a la URL
     }
      
     recetas = await request(url);
