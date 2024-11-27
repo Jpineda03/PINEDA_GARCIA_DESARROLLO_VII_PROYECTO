@@ -1,4 +1,5 @@
 export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, agregar) => {
+  
   let my_HTML = '';
   let ingredientes = [];
   let pasos = [];
@@ -34,9 +35,7 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
           </svg>
 
         </div>
-
       `
-
       id++;
       
     });
@@ -59,16 +58,10 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
           </svg>
         </div>   
       `
-
       id++;
 
     })
 
-
-
-
-
-    
     my_HTML = `
     
       <div class="detalle_receta_contenedor row" style="background-size: 100% 100%;">  
@@ -321,7 +314,7 @@ export const detallasGeneralesEditar = (DETALLE_OBJ, id, comentarios, eliminar, 
       
     
     </div>
-  `
+    `
 
   }
 
