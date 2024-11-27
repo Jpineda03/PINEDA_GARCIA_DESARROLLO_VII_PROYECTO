@@ -147,10 +147,8 @@
 
       <div class='main_container_v1'>
 
-        <div class='receta-v1'
-          style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
-
-
+        <div div onclick= 'listar_recetas()' class='receta-v1'
+          style='background-image:url("assets/images/receta.jpg"); background-size:cover; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1' style='background-color:red;'>
             <svg height="50%" width="50%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
@@ -180,8 +178,8 @@
 
         </div>
 
-        <div class='receta-v1'
-          style='background-image:url("assets/images/receta-2.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div div onclick= 'listar_recetas(2)' class='receta-v1'
+          style='background-image:url("assets/images/res.jpg"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1'>
             <svg height="50%" width="50%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
@@ -206,8 +204,8 @@
           </div>
         </div>
 
-        <div class='receta-v1'
-          style='background-image:url("assets/images/receta.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div div onclick= 'listar_recetas(1)' class='receta-v1'
+          style='background-image:url("assets/images/pollo.jpg"); background-size:cover; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1'>
             <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="white" class="bi bi-clock-fill"
               viewBox="0 0 16 16">
@@ -217,8 +215,8 @@
           </div>
         </div>
 
-        <div class='receta-v1'
-          style='background-image:url("assets/images/receta-2.png"); background-size:concovertain; background-position: center; background-repeat:no-repeat;'>
+        <div div onclick= 'listar_recetas(3)' class='receta-v1'
+          style='background-image:url("assets/images/china.jpg"); background-size:cover; background-position: center; background-repeat:no-repeat;'>
           <div class='receta-contenido-v1'>
             <svg height="50%" width="50%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
